@@ -1,9 +1,9 @@
 {% extends 'layout.html.twig' %}
-{% block title %}Acceuil {{parents}}{% endblock %}
+{% block title %}Acceuil {{parent()}}{% endblock %}
 {% block content %}
 <header>
     <div class="uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-dark" data-src="/assets/images/index.png" uk-img>
-        <h1>Stras'Cook</h1> 
+        <h1>Strascook</h1> 
     </div>
 </header>
 
@@ -23,8 +23,8 @@
         <button class="uk-button uk-button-default">Menus</button>
         <div class="uk-inline ">
             <button class="uk-button uk-button-default" type="button"><span uk-icon="icon:  triangle-down"></span></button>
-            <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;">
-                <ul class="uk-nav uk-dropdown-nav">
+            <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: false; ">
+                <ul class="uk-nav uk-dropdown-nav ">
                     <li class="uk-nav-header">Entrées</li>
                     <li class="uk-nav-divider"></li>
                     <li><a href="#">Végé</a></li>
@@ -114,7 +114,7 @@
 
 
 <div class="uk-flex uk-flex-right uk-margin-medium-right">
-    <a href="" uk-totop uk-scroll data-uk-smooth-scroll></a>
+    <a href="" uk-totop uk-scroll data-uk-smooth-scroll width="40" height="40"></a>
 </div>
 
 {% endblock %}
