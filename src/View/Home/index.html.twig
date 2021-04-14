@@ -1,5 +1,120 @@
 {% extends 'layout.html.twig' %}
-
+{% block title %}Acceuil {{parents}}{% endblock %}
 {% block content %}
-    <h1>Hello Wilder !</h1>
+<header>
+    <div class="uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-dark" data-src="/assets/images/index.png" uk-img>
+        <h1>Stras'Cook</h1> 
+    </div>
+</header>
+
+<div class="uk-card uk-card-default uk-card-body  uk-margin-medium uk-align-center uk-margin-xlarge-left uk-margin-xlarge-right">
+    <div class="uk-panel">
+    <img class="uk-align-left uk-margin-remove-adjacent" src="/assets/images/chef_index.jpg" width="600" height="525" alt="Example image">
+    <h3>A propos</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+</div>
+
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-align-center">
+    <h3 class="uk-card-title uk-align-center">Menus</h3>
+    <p>Lorem ipsum  sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div class="uk-button-group uk-flex uk-flex-center">
+        <button class="uk-button uk-button-default">Menus</button>
+        <div class="uk-inline ">
+            <button class="uk-button uk-button-default" type="button"><span uk-icon="icon:  triangle-down"></span></button>
+            <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li class="uk-nav-header">Entrées</li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="#">Végé</a></li>
+                    <li><a href="#">Végan</a></li>
+                    <li><a href="#">Normaux</a></li>
+                    <li class="uk-nav-header">Plats</li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="#">Végé</a></li>
+                    <li><a href="#">Végan</a></li>
+                    <li><a href="#">Normaux</a></li>
+                    <li class="uk-nav-header">Desserts</li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="#">Végé</a></li>
+                    <li><a href="#">Végan</a></li>
+                    <li><a href="#">Normaux</a></li>
+                </ul>
+            </div>
+         </div>
+    </div>
+</div>
+
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img src="/assets/images/entree_index.jpg" alt="" uk-cover>
+            <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+            <div class="uk-card-body ">
+                <h3 class="uk-card-title ">Media Left</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <div class="uk-button-group uk-flex uk-flex-center ">
+                <button class="uk-button uk-button-default uk-flex uk-flex-center">Entrées</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+    <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+        <img src="/assets/images/plat_index.jpg" alt="" uk-cover>
+        <canvas width="600" height="400"></canvas>
+    </div>
+    <div>
+            <div class="uk-card-body ">
+                <h3 class="uk-card-title ">Media Left</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <div class="uk-button-group uk-flex uk-flex-center ">
+                <button class="uk-button uk-button-default uk-flex uk-flex-center">Plats</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img src="/assets/images/dessert_index.jpg" alt="" uk-cover>
+            <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+            <div class="uk-card-body ">
+                <h3 class="uk-card-title ">Media Left</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <div class="uk-button-group uk-flex uk-flex-center ">
+                <button class="uk-button uk-button-default uk-flex uk-flex-center">Desserts</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+    <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+        <img src="/assets/images/boisson_index.jpg" alt="" uk-cover>
+        <canvas width="600" height="400"></canvas>
+    </div>
+    <div>
+            <div class="uk-card-body ">
+                <h3 class="uk-card-title ">Media Left</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <div class="uk-button-group uk-flex uk-flex-center ">
+                <button class="uk-button uk-button-default uk-flex uk-flex-center">Boissons</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+<div class="uk-flex uk-flex-right uk-margin-medium-right">
+    <a href="" uk-totop uk-scroll data-uk-smooth-scroll></a>
+</div>
+
 {% endblock %}

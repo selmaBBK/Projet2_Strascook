@@ -5,16 +5,32 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}-Stras'Cook{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
-    {% block stylesheet %}{% endblock %}
+    {% block stylesheet %}
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.19/dist/css/uikit.min.css" />
+    {% endblock %}
     <link rel="icon" href="/assets/images/favicon.png">
 </head>
 
 <body>
+    {% block navbar %}
+    {% include '/layout/navBar.html.twig' %}
+    {% endblock %}
+    
     {% block content %}{% endblock %}
-    {% block javascript %}{% endblock %}
+
+    {% block footer %}
+    {% include '/layout/footer.html.twig' %}
+    {% endblock %}
+
+    {% block javascript %}
+    <!-- UIkit CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.19/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.19/dist/js/uikit-icons.min.js"></script>
+    {% endblock %}
 </body>
 </html>
 
