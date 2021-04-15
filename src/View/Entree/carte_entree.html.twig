@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="uk-text-center">Entrées</h1>
+        {% for entree in entrees %}
+        {% if (loop.index %2) != 0 %} 
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img src="/assets/images/{{entree.image}}.jpg" alt="" uk-cover>
+            <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+            <div class="uk-card-body ">
+                <h3 class="uk-card-title ">{{ entree.name }}</h3>
+                <p>{{entree.description}}</p>
+                <a href="/Entree/edit/{{entree.id}}">Editer</a>
+                <form action="/Entree/delete/{{entree.id}}" method="POST">
+                <button>Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% else %}
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+    <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+        <img src="/assets/images/plat_index.jpg" alt="" uk-cover>
+        <canvas width="600" height="400"></canvas>
+    </div>
+    <div>
+            <div class="uk-card-body ">
+                <h3 class="uk-card-title ">{{ entree.name }}</h3>
+                <p>{{entree.description}}</p>
+                <a href="/Entree/edit/{{entree.id}}">Editer</a>
+                <form action="/Entree/delete/{{entree.id}}" method="POST">
+                <button>Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endif %}
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+    <a href='indexCat?cat=$vegan'>végan</a>
+     <a href="/Entree/add">Ajouter</a>
+     <form action="/Entree/indexVegan/{{entree.category}}" method="POST">
+                <button name='vegan'>végan</button>
+                </form>
+                <form action="/Entree/indexOmnivore/{{entree.category}}" method="POST">
+                <button name='vegan'>Omnivore</button>
+                </form>
+{% endblock %}
