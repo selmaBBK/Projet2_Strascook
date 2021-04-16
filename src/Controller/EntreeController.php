@@ -19,6 +19,10 @@ class EntreeController extends AbstractController
         return $this->twig->render('Entree/carte_entree.html.twig', ['entrees' => $entrees]);
     }
 
+    /**
+     * Tris des entrée suiavnt leur catégorie
+     */
+
     public function indexCat(string $cat): string
     {
         $entreeManager = new EntreeManager();
@@ -27,29 +31,7 @@ class EntreeController extends AbstractController
         return $this->twig->render('Entree/carte_entree.html.twig', ['entrees' => $entrees]);
     }
 
-    public function indexVegan(): string
-    {
-        $entreeManager = new EntreeManager();
-        $entrees = $entreeManager->selectVegan('name');
 
-        return $this->twig->render('Entree/carte_entree.html.twig', ['entrees' => $entrees]);
-    }
-
-    public function indexVegetarian(): string
-    {
-        $entreeManager = new EntreeManager();
-        $entrees = $entreeManager->selectVegetarian('name');
-
-        return $this->twig->render('Entree/carte_entree.html.twig', ['entrees' => $entrees]);
-    }
-
-    public function indexOmnivore(): string
-    {
-        $entreeManager = new EntreeManager();
-        $entrees = $entreeManager->selectOmnivore('name');
-
-        return $this->twig->render('Entree/carte_entree.html.twig', ['entrees' => $entrees]);
-    }
 
 
 
