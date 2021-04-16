@@ -31,10 +31,6 @@ class EntreeController extends AbstractController
         return $this->twig->render('Entree/carte_entree.html.twig', ['entrees' => $entrees]);
     }
 
-
-
-
-
     /**
      * Edit a specific entree
      */
