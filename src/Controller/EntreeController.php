@@ -19,6 +19,14 @@ class EntreeController extends AbstractController
         return $this->twig->render('Entree/carte_entree.html.twig', ['entrees' => $entrees]);
     }
 
+    public function indexCat(string $cat): string
+    {
+        $entreeManager = new EntreeManager();
+        $entrees = $entreeManager->selectCat($cat);
+
+        return $this->twig->render('Entree/carte_entree.html.twig', ['entrees' => $entrees]);
+    }
+
     public function indexVegan(): string
     {
         $entreeManager = new EntreeManager();

@@ -40,14 +40,14 @@ class EntreeManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function selectCat(array $entree): array
+    public function selectCat(string $cat): array
     {
 
-        $statement = $this->pdo->prepare("SELECT * FROM  static::TABLE  WHERE category=:cat");
-        $statement->bindValue('cat', $entree['category'], \PDO::PARAM_STR);
+        $query = 'SELECT * FROM ' . static::TABLE . " WHERE category= $cat";
 
 
-        return $this->$statement->execute()->fetchAll();
+
+        return $this->pdo->query($query)->fetchAll();
     }
 
     public function selectVegan(string $orderBy = '', string $direction = 'ASC'): array
@@ -62,7 +62,7 @@ class EntreeManager extends AbstractManager
 
     public function selectVegetarian(string $orderBy = '', string $direction = 'ASC'): array
     {
-        $query = 'SELECT * FROM ' . static::TABLE . " WHERE category= 'vegetarien'";
+        $query = 'SELECT * FROM ' . static::TABLE . " WHERE category= 'vegetarian'";
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
         }
