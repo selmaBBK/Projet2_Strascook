@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Controller;
-
 
 use App\Model\DessertManager;
 
@@ -15,8 +13,7 @@ class DessertController extends AbstractController
     public function index()
     {
         $dessertManager = new DessertManager();
-        $desserts=$dessertManager->selectall('name');
-
+        $desserts = $dessertManager->selectall('name');
         return $this->twig->render('Dessert/dessert.html.twig', ['desserts' => $desserts]);
     }
 
@@ -36,7 +33,7 @@ class DessertController extends AbstractController
      * Edit a specific dessert
      */
 
-    public function edit(int $id) : string
+    public function edit(int $id): string
     {
         $dessertManager = new DessertManager();
         $dessert = $dessertManager->selectOneById($id);
@@ -51,10 +48,7 @@ class DessertController extends AbstractController
             $dessertManager->update($dessert);
             header('Location: /dessert/show/' . $id);
         }
-
-        return $this->twig->render('Dessert/edit.html.twig', [
-            'dessert' => $dessert,
-        ]);
+        return $this->twig->render('Dessert/edit.html.twig', ['dessert' => $dessert,]);
     }
 
     /**
@@ -74,7 +68,6 @@ class DessertController extends AbstractController
             $id = $dessertManager->insert($dessert);
             header('Location:/dessert/show/' . $id);
         }
-
         return $this->twig->render('Dessert/add.html.twig');
     }
 
@@ -89,7 +82,4 @@ class DessertController extends AbstractController
             header('Location:/dessert/index');
         }
     }
-
-
-
 }
