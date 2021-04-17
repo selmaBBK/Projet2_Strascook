@@ -12,8 +12,6 @@
                     <a class="uk-article-title" href="#"><h1 class="uk-text-center">Entrées</h1></a>
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            
-                            
                             <li class="uk-nav-header"><a href="/Entree/indexCat/Omnivore">Omnivores</a></li>
                             <li class="uk-nav-divider"></li>
                             <li class="uk-nav-header"><a href="/Entree/indexCat/vegetarian">Végétariens</a></li>
@@ -38,9 +36,7 @@
             <div class="uk-card-body ">
                 <h3 class="uk-card-title ">{{ entree.name }}</h3>
                 <p>{{entree.description}}</p>
-                <a class="uk-hidden" href="/Entree/edit/{{entree.id}}">Editer</a>
                 <form action="/Entree/delete/{{entree.id}}" method="POST">
-                <button class="uk-hidden">Delete</button>
                 </form>
             </div>
         </div>
@@ -56,9 +52,7 @@
             <div class="uk-card-body ">
                 <h3 class="uk-card-title ">{{ entree.name }}</h3>
                 <p>{{entree.description}}</p>
-                <a class="uk-hidden" href="/Entree/edit/{{entree.id}}">Editer</a>
                 <form action="/Entree/delete/{{entree.id}}" method="POST">
-                <button class="uk-hidden">Delete</button>
                 </form>
             </div>
         </div>
@@ -69,8 +63,4 @@
             <li>Nothing to display</li>
         {% endfor %}
     </ul>
-
-     <a class="uk-hidden" href="/Entree/add">Ajouter</a>
-
-    
 {% endblock %}
