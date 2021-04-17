@@ -40,42 +40,12 @@ class EntreeManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function selectCat(array $entree): array
+    public function selectCat(string $cat): array
     {
 
-        $statement = $this->pdo->prepare("SELECT * FROM  static::TABLE  WHERE category=:cat");
-        $statement->bindValue('cat', $entree['category'], \PDO::PARAM_STR);
+        $query = 'SELECT * FROM ' . static::TABLE . " WHERE category= '$cat'";
 
 
-        return $this->$statement->execute()->fetchAll();
-    }
-
-    public function selectVegan(string $orderBy = '', string $direction = 'ASC'): array
-    {
-        $query = 'SELECT * FROM ' . static::TABLE . " WHERE category= 'vegan'";
-        if ($orderBy) {
-            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
-        }
-
-        return $this->pdo->query($query)->fetchAll();
-    }
-
-    public function selectVegetarian(string $orderBy = '', string $direction = 'ASC'): array
-    {
-        $query = 'SELECT * FROM ' . static::TABLE . " WHERE category= 'vegetarien'";
-        if ($orderBy) {
-            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
-        }
-
-        return $this->pdo->query($query)->fetchAll();
-    }
-
-    public function selectOmnivore(string $orderBy = '', string $direction = 'ASC'): array
-    {
-        $query = 'SELECT * FROM ' . static::TABLE . " WHERE category= 'omnivore'";
-        if ($orderBy) {
-            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
-        }
 
         return $this->pdo->query($query)->fetchAll();
     }
