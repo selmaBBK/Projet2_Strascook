@@ -21,7 +21,11 @@
     {% endblock %}
     
     {% block content %}{% endblock %}
-
+    {% block scroll %}
+    <div class="uk-flex uk-flex-right uk-margin-medium-right">
+        <a href="" uk-totop uk-scroll data-uk-smooth-scroll width="40" height="40"></a>
+    </div>
+    {% endblock %}
     {% block footer %}
     {% include '/layout/footer.html.twig' %}
     {% endblock %}

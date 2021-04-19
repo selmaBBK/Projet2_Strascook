@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Entrées {{parent()}}{% endblock %}
+{% block content %}
+ <div class="uk-align-center">
+
+    <nav class="uk-navbar-container " uk-navbar="dropbar: true; dropbar-mode: push">
+
+        <div class="uk-navbar-center">
+
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a class="uk-article-title" href="#"><h1 class="uk-text-center">Entrées</h1></a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-nav-header"><a href="/Entree/indexCat/Omnivore">Omnivores</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li class="uk-nav-header"><a href="/Entree/indexCat/vegetarian">Végétariens</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li class="uk-nav-header"><a href="/Entree/indexCat/vegan">Végans</a></li>
+                            <li class="uk-nav-divider"></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        </div>
+        {% for entree in entrees %}
+        {% if (loop.index %2) != 0 %} 
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img src="/assets/images/{{entree.image}}.jpg" alt="" uk-cover>
+            <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+            <div class="uk-card-body ">
+                <h3 class="uk-card-title ">{{ entree.name }}</h3>
+                <p>{{entree.description}}</p>
+                <form action="/Entree/delete/{{entree.id}}" method="POST">
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% else %}
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+    <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+        <img src="/assets/images/{{entree.image}}.jpg" alt="" uk-cover>
+        <canvas width="600" height="400"></canvas>
+    </div>
+    <div>
+            <div class="uk-card-body ">
+                <h3 class="uk-card-title ">{{ entree.name }}</h3>
+                <p>{{entree.description}}</p>
+                <form action="/Entree/delete/{{entree.id}}" method="POST">
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endif %}
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
