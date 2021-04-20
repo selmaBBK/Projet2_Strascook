@@ -46,7 +46,7 @@ class PlatController extends AbstractController
 
             // if validation is ok, update and redirection
             $platManager->update($plat);
-            header('Location: /plat/show' .$id);
+            header('Location: /plat/show' . $id);
         }
 
         return $this->twig->render('Plat/edit.html.twig', ['plat' => $plat,]);
@@ -84,5 +84,12 @@ class PlatController extends AbstractController
             $platManager->delete($id);
             header('Location: /plat/index');
         }
+    }
+    public function catSort(string $cat)
+    {
+        $platManager = new PlatManager();
+        $plats = $platManager->sort($cat);
+
+        return $this->twig->render('Plat/index.html.twig', ['plats' => $plats]);
     }
 }
