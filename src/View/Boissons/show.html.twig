@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Boisson {{ boissons.name }}</h1>
-    <p>{{ boissons.id }}. {{ boissons.title }}</p>
+    <p>{{ boissons.id }}. {{ boissons.name }}. {{ boissons.description }}. {{ boissons.price }}. {{ boissons.image }}</p>
     <a href="/Boissons/edit/{{ boissons.id }}">Edit</a>
     <form action="/Boissons/delete/{{boissons.id}}" method="POST">
         <button>Delete</button>

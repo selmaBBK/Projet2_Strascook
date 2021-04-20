@@ -4,10 +4,10 @@
     <h1>Boissons</h1>
     <ul>
         {% for boisson in boissons %}
-            <li><a href="/Boissons/show/{{ boissons.id }}">{{ boissons.id }}. {{ boissons.name }}. {{ boissons.description }}. {{ boissons.price }}. {{ boissons.image }}</a></li>
+            <li><a href="/Boissons/show/{{ boissons.id }}"> {{ boissons.name }}. {{ boissons.description }}. {{ boissons.price }}. {{ boissons.image }}</a></li>
         {% else %}
             <li>Nothing to display</li>
         {% endfor %}
     </ul>
-    <a href="/Boissons/add">Ajouter</a>
+    <a href="./add.html.twig">Ajouter</a>
 {% endblock %}
