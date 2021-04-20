@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Plats</h1>
+    <ul>
+        {% for plat in plats %}
+            {% if (loop.index %2) != 0 %}
+              
+              <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+    <div class="uk-card-media-left uk-cover-container">
+        <img src="/assets/images/{{plat.image}}" alt="" uk-cover>
+        <canvas width="600" height="400"></canvas>
+    </div>
+    <div>
+        <div class="uk-card-body">
+            <h3 class="uk-card-title">{{ plat.name }}</h3>
+            <p>{{ plat.description }}</p>
+            <p>{{ plat.price }}</p>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+    <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+        <img src="/assets/images/{{plat.image}}" alt="" uk-cover>
+        <canvas width="600" height="400"></canvas>
+    </div>
+    <div>
+        <div class="uk-card-body">
+            <h3 class="uk-card-title">{{ plat.name }}</h3>
+            <p>{{ plat.description }}</p>
+            <p>{{ plat.price }}</p>
+        </div>
+    </div>
+</div>
+        {% endif %}
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+        
+    
+  
+{% endblock %}

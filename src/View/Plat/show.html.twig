@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Plat {{plat.name }}</h1>
+    <p><li>{{ plat.id }}. Catégorie : {{ plat.category }}</li> <li>Nom du Plat : {{ plat.name }}</li> <li>Description : {{ plat.description }}</li> <li>Prix :{{ plat.price }}$</li> <li>image : {{ plat.image}}</li></p>
+    <a href="/plat/edit/{{ plat.id }}">Edit</a>
+    <form action="/plat/delete/{{plat.id}}" method="POST">
+        <button>Delete</button>
+    </form>
+    <a href="/plat/index">Back</a>
+{% endblock %}
