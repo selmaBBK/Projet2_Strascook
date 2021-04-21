@@ -1,0 +1,9 @@
+{# TODO : manage errors display #}
+
+<form method="post">
+	<input type="hidden" value="{{ user.id }}" name="id">
+	<input type="text" placeholder="name" name="name" value="{{user.name}}">
+	<textarea type="text" placeholder="adress" name="adress">{{user.adress}}</textarea>
+	<input type="text" placeholder="pass" name="pass" value="{{user.pass}}">
+	<input type="submit" value="Valider">
+</form>

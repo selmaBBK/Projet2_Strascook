@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+{% block title %}User {{parent()}}{% endblock %}
+{% block content %}
+
+    {% for user in users %}
+            <li><a href="/User/show/{{ user.id }}">{{ user.id }}. {{ user.name }}</a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+{% endblock %}
