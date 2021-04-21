@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Model;
+
 class BoissonsManager extends AbstractManager
 {
     public const TABLE = 'boissons';
