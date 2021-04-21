@@ -1,0 +1,11 @@
+{# TODO : manage errors display #}
+
+<form method="post">
+	<input type="hidden" value="{{ boissons.id }}" name="id">
+	<input type="text" placeholder="name" name="name" value="{{boissons.name}}">
+	<textarea type="text" placeholder="description" name="description">{{boissons.description}}</textarea>
+	<input type="text" placeholder="price" name="price" value="{{boissons.price}}">
+	<input type="text" placeholder="image" name="image" value="{{boissons.image}}">
+	<input type="submit" value="Valider">
+</form>
+

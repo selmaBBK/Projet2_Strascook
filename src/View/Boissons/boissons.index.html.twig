@@ -1,0 +1,51 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Boissons {{parent()}}{% endblock %}
+{% block content %}
+<div class="uk-align-center">
+    <nav class="uk-navbar-container " uk-navbar="dropbar: true; dropbar-mode: push">
+
+        <div class="uk-navbar-center">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a class="uk-article-title" href="#"><h1 class="uk-text-center">Boissons</h1></a>
+            </ul>
+        </div>
+        </li>
+</div>
+        {% for boisson in boissons %}
+
+        {% if (loop.index %2) != 0 %}
+            <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+                <div class="uk-card-media-left uk-cover-container">
+                    <img src="/assets/images/{{boisson.image}}" alt="" uk-cover>
+                    <canvas width="600" height="400"></canvas>
+                </div>
+                <div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-card-title">{{ boisson.name }}</h3>
+                        <p>{{ boisson.description }}</p>
+                        <p>{{ boisson.price }}</p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+                <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+                    <img src="/assets/images/{{boisson.image}}" alt="" uk-cover>
+                    <canvas width="600" height="400"></canvas>
+                </div>
+                <div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-card-title">{{ boisson.name }}</h3>
+                        <p>{{ boisson.description }}</p>
+                        <p>{{ boisson.price }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+{% endblock %}
