@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Model\BoissonsManager;
@@ -82,4 +83,5 @@ class BoissonsController extends AbstractController
             header('Location:/Boissons/index');
         }
     }
+    
 }
