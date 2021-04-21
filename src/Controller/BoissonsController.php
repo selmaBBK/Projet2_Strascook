@@ -83,5 +83,4 @@ class BoissonsController extends AbstractController
             header('Location:/Boissons/index');
         }
     }
-
 }
