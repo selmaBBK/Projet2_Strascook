@@ -1,0 +1,67 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="uk-text-center">Plat du jour</h1>
+<div class="uk-card" style="background-color:#f0f0f0;">
+            {% for jour in jours %}
+            {% if (loop.index %2) != 0 %} 
+        
+        {% else %}
+   
+    {% endif %}
+            {% else %}
+                <li>Nothing to display</li>
+            {% endfor %}
+        </ul>
+</div>
+    <div class="uk-card uk-card-default uk-width-3-4 uk-align-center" style="background-color:#f0f0f0;">
+    {% for jour in jours %}
+    {% if (loop.index %2) != 0 %}
+        <div class="uk-card-body">
+            <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                <div class="uk-card-media-left uk-cover-container">
+                    <img src="/assets/images/{{jour.image}}.jpg" alt="" uk-cover>
+                    <canvas width="600" height="400"></canvas>
+                </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">{{jour.name}}</h3>
+                    <p>{{jour.description}}</p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+                <img src="/assets/images/{{jour.image}}.jpg" alt="" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">{{jour.name}}</h3>
+                    <p>{{jour.description}}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-align-center" style="background-color:#ffffff;">
+    <h3 class="uk-card-title">Mais attendez, vous pouvez aussi choisir ...</h3>
+    <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+        <div class="uk-navbar-center">
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-margin-large-right uk-margin-small-top"><a href="#"><h3>Entrées</h3></a></li>
+                <li class="uk-margin-large-right uk-margin-small-top"><a href="#"><h3>Plats</h3></a></li>
+                <li class="uk-margin-large-right uk-margin-small-top"><a href="#"><h3>Desserts</h3></a></li>
+                <li class="uk-margin-large-right uk-margin-small-top"><a href="#"><h3>Boissons</h3></a></li>
+            </ul>
+
+        </div>
+    </nav>
+</div>
+{% endblock %}

@@ -49,9 +49,7 @@ class ItemController extends AbstractController
             header('Location: /item/show/' . $id);
         }
 
-        return $this->twig->render('Item/edit.html.twig', [
-            'item' => $item,
-        ]);
+        return $this->twig->render('Item/edit.html.twig', ['item' => $item,]);
     }
 
 

@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Dessert {{ dessert.name }}</h1>
+    <p><li>{{ dessert.id }}. Catégorie : {{ dessert.category }}</li> <li>Nom du déssert : {{ dessert.name }}</li> <li>Description : {{ dessert.description }}</li> <li>Prix :{{ dessert.price }}$</li> <li>image : {{ dessert.image}}</li></p>
+    <a href="/dessert/edit/{{ dessert.id }}">Edit</a>
+    <form action="/dessert/delete/{{dessert.id}}" method="POST">
+        <button>Delete</button>
+    </form>
+    <a href="/dessert/index">Back</a>
+{% endblock %}
