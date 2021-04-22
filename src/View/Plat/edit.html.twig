@@ -1,8 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1> Edit Plat {{ plat.name }}</h1>
+    <h1> Editer : {{ plat.name }}</h1>
     {% include 'Plat/_form.html.twig' %}
-    <a href="/Admin/index">Back</a>
+    <a class="uk-button uk-button-default" href="/Admin/index">Back</a>
+
 
 {% endblock %}
