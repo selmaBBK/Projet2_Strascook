@@ -70,7 +70,7 @@
                    <li class="uk-text-center uk-flex uk-flex-center uk-margin-large-left ">
                    {{ dessert.name }} prix de {{ dessert.price }} € <br> {{dessert.description}}
                    <a class="uk-button uk-button-default uk-margin-medium-left uk-height-1-1" href="/Dessert/edit/{{ dessert.id }}">Editer</a>
-                    <form action="/Dessert/delete/{{Dessert.id}}" method="POST">
+                    <form action="/Dessert/delete/{{dessert.id}}" method="POST">
                         <button class="uk-button uk-button-default uk-width">Supprimer</button>
                     </form>
                 {% endfor %}

@@ -64,7 +64,7 @@ class BoissonsController extends AbstractController
             // if validation is ok, insert and redirection
             $boissonsManager = new BoissonsManager();
             $id = $boissonsManager->insert($boissons);
-            header('Location:/Boissons/show/' . $id);
+            header('Location:/Admin/index/' . $id);
         }
 
         return $this->twig->render('Boissons/add.html.twig');

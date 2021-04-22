@@ -46,7 +46,7 @@ class DessertController extends AbstractController
 
             // if validation is ok, update and redirection
             $dessertManager->update($dessert);
-            header('Location: /dessert/show/' . $id);
+            header('Location: /Admin/index/' . $id);
         }
         return $this->twig->render('Dessert/edit.html.twig', ['dessert' => $dessert,]);
     }
@@ -66,7 +66,7 @@ class DessertController extends AbstractController
             // if validation is ok, insert and redirection
             $dessertManager = new DessertManager();
             $id = $dessertManager->insert($dessert);
-            header('Location:/dessert/show/' . $id);
+            header('Location:/Admin/index/' . $id);
         }
         return $this->twig->render('Dessert/add.html.twig');
     }
@@ -79,7 +79,7 @@ class DessertController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dessertManager = new DessertManager();
             $dessertManager->delete($id);
-            header('Location:/dessert/index');
+            header('Location:/Admin/index');
         }
     }
 }
