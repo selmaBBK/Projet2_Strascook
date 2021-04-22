@@ -1,0 +1,88 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="uk-text-center">Modifier/supprimer des plats</h1>
+
+        <h1 class="uk-text-center">Plat du Jour</h1>
+        <div class="uk-child-width-expand@s" uk-grid>
+
+            <div>
+                <ul class="uk-list uk-list-large uk-list-divider">
+                {% for platDJ in platDuJour %}
+                
+                   <li class="uk-text-center uk-flex uk-flex-center uk-margin-large-left">
+                   {{ platDJ.name }} prix de {{ platDJ.price }} € <br> {{platDJ.description}}
+                   <a class="uk-button uk-button-default uk-margin-medium-left uk-height-1-1" href="/Jour/edit/{{ platDJ.id }}">Editer</a>
+                    <form action="/Jour/delete/{{platDJ.id}}" method="POST">
+                        <button class="uk-button uk-button-default uk-width">Supprimer</button>
+                    </form>
+                {% endfor %}
+                    </li>
+               
+                </ul>
+            </div>
+        </div>
+
+    
+
+    <a class="uk-button uk-button-default uk-margin-large-left uk-margin-large-right uk-align-center" href="/Jour/add">Ajouter un élément du plat du jour</a>
+
+        <h1>Entrees</h1>
+    <ul>
+        {% for entree in entrees %}
+            <li>{{ entree.id }}. {{ entree.name }}. {{ entree.price }}<a href="/Entree/edit/{{ entree.id }}"> Editer</a>
+                <form action="/Entree/delete/{{entree.id}}" method="POST">
+                    <button>Delete</button>
+                </form>
+            </li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/Jour/add">Ajouter une entrée</a>
+
+        <h1>Plats</h1>
+    <ul>
+        {% for plat in plats %}
+            <li>{{ plat.id }}. {{ plat.name }}. {{ plat.price }}<a href="/Plat/edit/{{ plat.id }}"> Editer</a>
+                <form action="/Plat/delete/{{plat.id}}" method="POST">
+                    <button>Delete</button>
+                </form>
+            </li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/Jour/add">Ajouter un plat</a>
+
+        <h1>Desserts</h1>
+    <ul>
+        {% for dessert in desserts %}
+            <li>{{ dessert.id }}. {{ dessert.name }}. {{ dessert.price }}<a href="/Dessert/edit/{{ dessert.id }}"> Editer</a>
+                <form action="/Dessert/delete/{{dessert.id}}" method="POST">
+                    <button>Delete</button>
+                </form>
+            </li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/Jour/add">Ajouter une un dessert</a>
+
+        <h1>Boissons</h1>
+    <ul>
+        {% for boisson in boissons %}
+            <li>{{ boisson.id }}. {{ boisson.name }}. {{ boisson.price }} <a href="/Boissons/edit/{{ boisson.id }}"> Editer</a>
+                <form action="/Boissons/delete/{{boisson.id}}" method="POST">
+                    <button>Delete</button>
+                </form>
+            </li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+    <a href="/Jour/add">Ajouter une boisson</a>
+{% endblock %}
