@@ -47,7 +47,7 @@ class EntreeController extends AbstractController
 
             // if validation is ok, update and redirection
             $entreeManager->update($entree);
-            header('Location: /Entree/index');
+            header('Location: /Admin/index');
         }
 
         return $this->twig->render('Entree/edit.html.twig', ['entree' => $entree]);
@@ -68,6 +68,7 @@ class EntreeController extends AbstractController
             // if validation is ok, insert and redirection
             $entreeManager = new EntreeManager();
             $entreeManager->insert($entree);
+            header('Location: /Admin/index');
         }
 
         return $this->twig->render('Entree/add.html.twig');
@@ -82,7 +83,7 @@ class EntreeController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $itemManager = new EntreeManager();
             $itemManager->delete($id);
-            header('Location:/Entree/index');
+            header('Location:/Admin/index');
         }
     }
 }
