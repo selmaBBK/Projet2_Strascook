@@ -44,7 +44,7 @@ class BoissonsController extends AbstractController
 
             // if validation is ok, update and redirection
             $boissonsManager->update($boissons);
-            header('Location: /Boissons/show/' . $id);
+            header('Location: /Admin/index/' . $id);
         }
 
         return $this->twig->render('Boissons/edit.html.twig', ['boissons' => $boissons,]);
