@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+    {{ post }}
     <h1>Modifier {{ jour.name }}</h1>
     {% include 'PlatDuJour/_form.html.twig' %}
     <a class="uk-button uk-button-default" href="/Admin/index">Back</a>
