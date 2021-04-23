@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <h1>Panier</h1>
+
+        <h1>Plat du Jour</h1>
+    <ul>
+        {% for platDJ in platDuJour %}
+            <li>{{ platDJ.id }}. {{ platDJ.name }}. {{ platDJ.price }} </a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+
+        <h1>Entrees</h1>
+    <ul>
+        {% for entree in entrees %}
+            <li>{{ entree.id }}. {{ entree.name }}. {{ entree.price }} </a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+
+        <h1>Plats</h1>
+    <ul>
+        {% for plat in plats %}
+            <li>{{ plat.id }}. {{ plat.name }}. {{ plat.price }} </a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+
+        <h1>Desserts</h1>
+    <ul>
+        {% for dessert in desserts %}
+            <li>{{ dessert.id }}. {{ dessert.name }}. {{ dessert.price }} </a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+
+        <h1>Boissons</h1>
+    <ul>
+        {% for boisson in boissons %}
+            <li>{{ boisson.id }}. {{ boisson.name }}. {{ boisson.price }} </a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
