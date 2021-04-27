@@ -64,16 +64,16 @@ class PanierManager extends AbstractManager
 
     public function insert(array $panier): int
     {
+
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE_PANIER .
         " (`plat_du_jour_id`, `entree_id`, `plats_id`, `desserts_id`, `boissons_id`) 
     VALUES (:pdj, :entree, :plat, :dessert, :boisson) ");
-        $statement->bindValue('pdj', $panier['pdj'], \PDO::PARAM_INT);
-        $statement->bindValue('entree', $panier['entree'], \PDO::PARAM_INT);
-        $statement->bindValue('plat', $panier['plat'], \PDO::PARAM_INT);
-        $statement->bindValue('dessert', $panier['dessert'], \PDO::PARAM_INT);
-        $statement->bindValue('boisson', $panier['boisson'], \PDO::PARAM_INT);
+        $statement->bindValue('pdj', (int)$panier['pdj']) ;
+        $statement->bindValue('entree', (int)$panier['entree']) ;
+        $statement->bindValue('plat', (int)$panier['plat']) ;
+        $statement->bindValue('dessert', (int)$panier['dessert']) ;
+        $statement->bindValue('boisson', (int)$panier['boisson']) ;
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
-
     }
 }

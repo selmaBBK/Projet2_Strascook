@@ -37,11 +37,14 @@ class PanierController extends AbstractController
             $panier = array_map('trim', $_POST);
 
             // TODO validations (length, format...)
-
+                if($_POST['pdj'] === '')
+                { $panier['pdj'] = 'NULL';
+                }
+                var_dump($_POST);
             // if validation is ok, insert and redirection
             $panierManager = new PanierManager();
             $id = $panierManager->insert($panier);
-            header('Location:/Panier/add');
+            header('Location:/Panier/show' . $id);
         }
         return $this->twig->render('Panier/add.html.twig', [
             'entrees' => $entrees,
@@ -50,5 +53,13 @@ class PanierController extends AbstractController
             'platDuJour' => $platDuJour,
             'plats' => $plats,
         ]);
+    }
+
+    public function show(int $id): string
+    {
+        $panierManager = new PanierManager();
+        $panier = $panierManager->selectOneById($id);
+
+        return $this->twig->render('Panier/show.html.twig', ['panier' => $panier]);
     }
 }
