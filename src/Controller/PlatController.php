@@ -60,7 +60,7 @@ class PlatController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            
+            $plat = array_map('trim', $_POST);
             // TODO validations (length, format...)
 
             // if validation is ok, insert and redirection
