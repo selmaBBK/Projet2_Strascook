@@ -75,4 +75,21 @@ class PanierManager extends AbstractManager
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
+    public function selectPanier(int $id)
+    {
+        $statement = $this->pdo->prepare("SELECT e.name entreeName, e.price entreePrice,
+       pl.name platName, pl.price platPrice, d.name dessertName,
+       d.price dessertPrice, b.name boissonName, d.price boissonPrice,
+       pa.plat_du_jour_id FROM " . self::TABLE_PANIER .
+            " pa LEFT JOIN " . self::TABLE_ENTREES . " e ON e.id=pa.entree_id 
+        LEFT JOIN " . self::TABLE_PLATS . " pl ON pl.id=pa.plats_id 
+        LEFT JOIN " . self::TABLE_DESSERTS . " d ON d.id=pa.desserts_id 
+        LEFT JOIN " . self::TABLE_BOISSONS . " b ON b.id=pa.boissons_id 
+        LEFT JOIN " . self::TABLE_PLAT_DU_JOUR . " pdj ON pdj.id=pa.plat_du_jour_id
+        Where pa.id=:id");
+
+        $statement->bindValue('id', $id);
+        $statement->execute();
+        return $statement->fetch();
+    }
 }

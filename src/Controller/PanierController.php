@@ -61,7 +61,7 @@ class PanierController extends AbstractController
             // if validation is ok, insert and redirection
             $panierManager = new PanierManager();
             $id = $panierManager->insert($panier);
-            header('Location:/Panier/show' . $id);
+            header('Location:/Panier/show/' . $id);
         }
         return $this->twig->render('Panier/add.html.twig', [
             'entrees' => $entrees,
@@ -75,8 +75,12 @@ class PanierController extends AbstractController
     public function show(int $id): string
     {
         $panierManager = new PanierManager();
-        $panier = $panierManager->selectOneById($id);
-
-        return $this->twig->render('Panier/show.html.twig', ['panier' => $panier]);
+        $panier = $panierManager->selectPanier($id);
+        if ($panier['plat_du_jour_id'] == 1) {
+            $pdj = $panierManager->selectPlatDuJour();
+        } else {
+            $pdj = '';
+        }
+        return $this->twig->render('Panier/show.html.twig', ['panier' => $panier, 'pdj' => $pdj]);
     }
 }

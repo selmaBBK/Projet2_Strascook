@@ -33,9 +33,8 @@
         <div uk-form-custom="target: > * > span:first-child">
             <select name='pdj'>
                 <option value="">Selectionne ton choix...</option>
-                {% for platDJ in platDuJour %}
-                <option value="{{platDJ.id}}">{{platDJ.name}} - {{platDJ.category}}</option>
-                {% endfor %}
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
             </select>
             <button class="uk-button uk-button-default" type="button" tabindex="-1">
                 <span></span>
