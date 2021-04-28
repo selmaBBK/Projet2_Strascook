@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\EntreeManager;
+use App\Service\CheckUser;
 
 class EntreeController extends AbstractController
 {
@@ -36,6 +37,8 @@ class EntreeController extends AbstractController
      */
     public function edit(int $id): string
     {
+        $checkAdmin = new CheckUser();
+        $checkAdmin->checkAdmin();
         $entreeManager = new EntreeManager();
         $entree = $entreeManager->selectOneById($id);
 
@@ -59,6 +62,8 @@ class EntreeController extends AbstractController
      */
     public function add(): string
     {
+        $checkAdmin = new CheckUser();
+        $checkAdmin->checkAdmin();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $entree = array_map('trim', $_POST);

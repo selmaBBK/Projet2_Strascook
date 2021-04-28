@@ -92,7 +92,12 @@ class UserController extends AbstractController
                     $_SESSION['userId'] = $login['id'];
                     $_SESSION['adress'] = $login['adress'];
                     $_SESSION['pass'] = $login['pass'];
-                    $_SESSION['admin'] = $login['is_admin'];
+                    if ($login['is_admin'] == '1') {
+                        $_SESSION['admin'] = true;
+                    } else {
+                        $_SESSION['admin'] = false;
+                    }
+
 
                     header('Location:/User/show/' . $login['id']);
                 } else {
@@ -101,5 +106,11 @@ class UserController extends AbstractController
             }
         }
         return $this->twig->render('User/identification.html.twig');
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        header('location:/User/Connexion/');
     }
 }

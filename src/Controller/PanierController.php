@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\PanierManager;
+use App\Service\CheckUser;
 
 class PanierController extends AbstractController
 {
@@ -31,6 +32,9 @@ class PanierController extends AbstractController
         $desserts = $panierManager->selectDesserts('id');
         $platDuJour = $panierManager->selectPlatDuJour('id');
         $plats = $panierManager->selectPlats('id');
+
+        $checkUser = new checkUser();
+        $checkUser->checkLogin();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
