@@ -12,7 +12,7 @@ class AdminManager extends AbstractManager
 
     public function selectEntrees(string $orderBy = '', string $direction = 'ASC'): array
     {
-        $query = 'SELECT * FROM ' . static::TABLE_ENTREES;
+        $query = 'SELECT * FROM ' . self::TABLE_ENTREES;
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
         }
@@ -22,7 +22,7 @@ class AdminManager extends AbstractManager
 
     public function selectBoissons(string $orderBy = '', string $direction = 'ASC'): array
     {
-        $query = 'SELECT * FROM ' . static::TABLE_BOISSONS;
+        $query = 'SELECT * FROM ' . self::TABLE_BOISSONS;
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
         }
@@ -32,7 +32,7 @@ class AdminManager extends AbstractManager
 
     public function selectDesserts(string $orderBy = '', string $direction = 'ASC'): array
     {
-        $query = 'SELECT * FROM ' . static::TABLE_DESSERTS;
+        $query = 'SELECT * FROM ' . self::TABLE_DESSERTS;
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
         }
@@ -42,7 +42,7 @@ class AdminManager extends AbstractManager
 
     public function selectPlatDuJour(string $orderBy = '', string $direction = 'ASC'): array
     {
-        $query = 'SELECT * FROM ' . static::TABLE_PLAT_DU_JOUR;
+        $query = 'SELECT * FROM ' . self::TABLE_PLAT_DU_JOUR;
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
         }
@@ -52,7 +52,7 @@ class AdminManager extends AbstractManager
 
     public function selectPlats(string $orderBy = '', string $direction = 'ASC'): array
     {
-        $query = 'SELECT * FROM ' . static::TABLE_PLATS;
+        $query = 'SELECT * FROM ' . self::TABLE_PLATS;
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
         }
