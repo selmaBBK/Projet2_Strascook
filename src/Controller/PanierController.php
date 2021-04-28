@@ -34,11 +34,21 @@ class PanierController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            if ($_POST['pdj'] == '') $_POST['pdj'] = null;
-            if ($_POST['entree'] == '') $_POST['entree'] = null;
-            if ($_POST['plat'] == '') $_POST['plat'] = null;
-            if ($_POST['dessert'] == '') $_POST['dessert'] = null;
-            if ($_POST['boisson'] == '') $_POST['boisson'] = null;
+            if ($_POST['pdj'] == '') {
+                $_POST['pdj'] = null;
+            }
+            if ($_POST['entree'] == '') {
+                $_POST['entree'] = null;
+            }
+            if ($_POST['plat'] == '') {
+                $_POST['plat'] = null;
+            }
+            if ($_POST['dessert'] == '') {
+                $_POST['dessert'] = null;
+            }
+            if ($_POST['boisson'] == '') {
+                $_POST['boisson'] = null;
+            }
 
             $panier = $_POST;
 
