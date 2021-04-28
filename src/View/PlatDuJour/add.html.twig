@@ -1,7 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Add a new item</h1>
-    {% include 'Entree/_form.html.twig' %}
-    <a href="/Jour/index">Back</a>
+    
+    <h1>Nouveau plat du jour</h1>
+    {% include 'PlatDuJour/_form.html.twig' %}
+    <a class="uk-button uk-button-default" href="/Admin/index">Back</a>
+
 {% endblock %}

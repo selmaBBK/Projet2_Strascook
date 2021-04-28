@@ -18,32 +18,34 @@
     </div>
 
 
-<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-align-center">
-    <h3 class="uk-card-title uk-align-center">Menu</h3>
+<div class="uk-card uk-card-default uk-card-body uk-align-center uk-margin-xlarge-left uk-margin-xlarge-right">
+    <h3 class="uk-card-title uk-text-center">Menu</h3>
     <p>Lorem ipsum  sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <div class="uk-button-group uk-flex uk-flex-center">
+        <form action="/Jour/index/" methode="post">
         <button class="uk-button uk-button-default">Carte</button>
+        </form>
         <div class="uk-inline ">
             <button class="uk-button uk-button-default" type="button"><span uk-icon="icon:  triangle-down"></span></button>
             <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: false; ">
                 <ul class="uk-nav uk-dropdown-nav ">
-                    <li class="uk-nav-header">Entrées</li>
+                    <li class="uk-nav-header"><a href="/Entree/index">Entrées</a></li>
                     <li class="uk-nav-divider"></li>
                     <li><a href="/Entree/indexCat/Omnivore">Omnivores</a></li>
                     <li><a href="/Entree/indexCat/vegetarian">Végétariens</a></li>
                     <li><a href="/Entree/indexCat/vegan">Végans</a></li>
-                    <li class="uk-nav-header">Plats</li>
+                    <li class="uk-nav-header"><a href="/Plat/index">Plats</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a href="#">Végé</a></li>
-                    <li><a href="#">Végan</a></li>
-                    <li><a href="#">Normaux</a></li>
-                    <li class="uk-nav-header">Desserts</li>
+                    <li><a href="/Plat/catSort/Omnivore">Omnivores</a></li>
+                    <li><a href="/Entree/catSort/vegetarian">Végétariens</a></li>
+                    <li><a href="/Entree/catSort/vegan">Végans</a></li>
+                    <li class="uk-nav-header"><a href="/Dessert/index">Desserts</a></li>
                     <li class="uk-nav-divider"></li>
-                    <li><a href="#">Végé</a></li>
-                    <li><a href="#">Végan</a></li>
-                    <li><a href="#">Normaux</a></li>
+                    <li><a href="#">Omnivores</a></li>
+                    <li><a href="#">Végétariens</a></li>
+                    <li><a href="#">Végans</a></li>
+                    <li class="uk-nav-header"><a href="/Boissons/index">Boissons</a></li>
                 </ul>
-
             </div>
         </div>
     </div>
@@ -55,10 +57,12 @@
         </div>
         <div>
             <div class="uk-card-body ">
-                <h3 class="uk-card-title ">Media Left</h3>
+                <h3 class="uk-card-title ">Les entrées</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                 <div class="uk-button-group uk-flex uk-flex-center ">
-                    <button class="uk-button uk-button-default uk-flex uk-flex-center">Entrées</button>
+                    <form action="/Entree/index/" method="post">
+                    <button class="uk-button uk-button-default uk-flex uk-flex-center" >Entrées</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -71,10 +75,12 @@
         </div>
         <div>
             <div class="uk-card-body ">
-                <h3 class="uk-card-title ">Media Left</h3>
+                <h3 class="uk-card-title ">Les plats</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                 <div class="uk-button-group uk-flex uk-flex-center ">
+                    <form action="/Plat/index/" method="post">
                     <button class="uk-button uk-button-default uk-flex uk-flex-center">Plats</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -87,10 +93,12 @@
         </div>
         <div>
             <div class="uk-card-body ">
-                <h3 class="uk-card-title ">Media Left</h3>
+                <h3 class="uk-card-title ">Les desserts</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                 <div class="uk-button-group uk-flex uk-flex-center ">
+                    <form action="/Dessert/index/" method="post">
                     <button class="uk-button uk-button-default uk-flex uk-flex-center">Desserts</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -103,10 +111,12 @@
         </div>
         <div>
             <div class="uk-card-body ">
-                <h3 class="uk-card-title ">Media Left</h3>
+                <h3 class="uk-card-title ">Les boissons</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                 <div class="uk-button-group uk-flex uk-flex-center ">
+                    <form action="/Boissons/index/" method="post">
                     <button class="uk-button uk-button-default uk-flex uk-flex-center">Boissons</button>
+                    </form>
                 </div>
             </div>
         </div>

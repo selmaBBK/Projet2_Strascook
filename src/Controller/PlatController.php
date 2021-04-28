@@ -46,7 +46,7 @@ class PlatController extends AbstractController
 
             // if validation is ok, update and redirection
             $platManager->update($plat);
-            header('Location: /plat/show' . $id);
+            header('Location: /Admin/index');
         }
 
         return $this->twig->render('Plat/edit.html.twig', ['plat' => $plat,]);

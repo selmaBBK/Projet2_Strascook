@@ -36,7 +36,7 @@ class JourController extends AbstractController
 
             // if validation is ok, update and redirection
             $jourManager->update($jour);
-            header('Location: /Jour/index');
+            header('Location: /Admin/index');
         }
 
         return $this->twig->render('PlatDuJour/edit.html.twig', ['jour' => $jour]);
@@ -57,6 +57,7 @@ class JourController extends AbstractController
             // if validation is ok, insert and redirection
             $jourManager = new JourManager();
             $jourManager->insert($jour);
+            header('Location: /Admin/index');
         }
 
         return $this->twig->render('PlatDuJour/add.html.twig');
@@ -71,7 +72,7 @@ class JourController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $jourManager = new JourManager();
             $jourManager->delete($id);
-            header('Location:/Jour/index');
+            header('Location:/Admin/index');
         }
     }
 }

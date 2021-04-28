@@ -1,11 +1,35 @@
 {# TODO : manage errors display #}
 
-<form method="post">
+<form class="uk-form-horizontal uk-margin-large" method="post">
 	<input type="hidden" value="{{ boissons.id }}" name="id">
-	<input type="text" placeholder="name" name="name" value="{{boissons.name}}">
-	<textarea type="text" placeholder="description" name="description">{{boissons.description}}</textarea>
-	<input type="text" placeholder="price" name="price" value="{{boissons.price}}">
-	<input type="text" placeholder="image" name="image" value="{{boissons.image}}">
-	<input type="submit" value="Valider">
-</form>
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">Text</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="name" name="name" value="{{boissons.name}}">
+        </div>
+    </div>
 
+	<div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-textarea">Text</label>
+        <div class="uk-form-controls">
+            <textarea class="uk-textarea" id="form-horizontal-textarea" rows="5" type="text" placeholder="description" name="description">{{boissons.description}}</textarea>
+    	</div>
+    </div>
+
+	<div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">Text</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="price" name="price" value="{{boissons.price}}">
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">Text</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="image" name="image" value="{{boissons.image}}">
+        </div>
+    </div>
+
+<input class="uk-button uk-button-default uk-align-center" type="submit" value="Valider">
+
+</form>
