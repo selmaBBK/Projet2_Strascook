@@ -1,0 +1,139 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+
+
+<form class="uk-grid-small " uk-grid action="" method="post">
+    <h1 class="uk-text-center">Reservation</h1>
+    <legend class="uk-legend uk-text-center">Adresse :</legend>
+    <div class="uk-width-1-2 uk-align-center">
+        <input class="uk-input" type="text" placeholder="100">
+    </div>
+    <legend class="uk-legend uk-text-center">Choix de la formule :</legend>
+   
+    <div class="uk-width-1-6 uk-align-center">
+        <label ><input class="uk-radio " type="radio" name="radio1"> Chef à domicile </label>
+        <label><input class="uk-radio uk-margin-large-left" type="radio" name="radio1"> Livraison</label>
+    </div>
+
+    <legend class="uk-legend uk-text-center">Date (Attention on livre qu'à partir de 17h) : </legend>
+    <div class="uk-width-1-2 uk-align-center">
+        <input class="uk-input" type="datetime-local" placeholder="now">
+    </div>
+
+    <legend class="uk-legend uk-text-center">Saisie de la commande : </legend>
+
+    
+
+    <div class="uk-card uk-card-default uk-margin uk-align-center">
+    <legend class="uk-legend uk-text-center"><label> Plat du jour : </legend>
+    
+        <div class="uk-margin">
+        <div uk-form-custom="target: > * > span:first-child">
+            <select name='pdj'>
+                <option value="">Selectionne ton choix...</option>
+                {% for platDJ in platDuJour %}
+                <option value="{{platDJ.id}}">{{platDJ.name}} - {{platDJ.category}}</option>
+                {% endfor %}
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                <span></span>
+                <span uk-icon="icon: chevron-down"></span>
+            </button>
+        </div>
+    </div>
+    </div>
+       
+
+    <div class="uk-card uk-card-default uk-margin uk-align-center">
+    <legend class="uk-legend uk-text-center">Entrees: </legend>
+    
+        <div class="uk-margin">
+        <div uk-form-custom="target: > * > span:first-child">
+            <select name='entree'>
+                <option value="">Selectionne ton choix...</option>
+                {% for entree in entrees %}
+                <option value="{{entree.id}}">{{entree.name}} - {{entree.category}}</option>
+                {% endfor %}
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                <span></span>
+                <span uk-icon="icon: chevron-down"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+        
+    <div class="uk-card uk-card-default uk-margin uk-align-center">
+    <legend class="uk-legend uk-text-center">Plats </legend>
+
+    
+        <div class="uk-margin">
+        <div uk-form-custom="target: > * > span:first-child">
+            <select name='plat'>
+                <option value="">Selectionne ton choix...</option>
+                {% for plat in plats %}
+                <option value="{{plat.id}}">{{plat.name}} - {{plat.category}}</option>
+                {% endfor %}
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                <span></span>
+                <span uk-icon="icon: chevron-down"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div class="uk-card uk-card-default uk-margin uk-align-center">
+        <legend class="uk-legend uk-text-center">desserts : </legend> 
+         
+        <div class="uk-margin">
+        <div uk-form-custom="target: > * > span:first-child">
+            <select name='dessert'>
+                <option value="">Selectionne ton choix...</option>
+                {% for dessert in desserts %}
+                <option value="{{dessert.id}}">{{dessert.name}} - {{dessert.category}}</option>
+                {% endfor %}
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                <span></span>
+                <span uk-icon="icon: chevron-down"></span>
+            </button>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="uk-card uk-card-default uk-margin uk-align-center">
+        <legend class="uk-legend uk-text-center">Boissons : </legend>
+
+        
+        <div class="uk-margin">
+        <div uk-form-custom="target: > * > span:first-child">
+            <select name='boisson'>
+                <option value="">Selectionne ton choix...</option>
+                {% for boisson in boissons %}
+                <option value="{{boisson.id}}">{{boisson.name}}</option>
+                {% endfor %}
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                <span></span>
+                <span uk-icon="icon: chevron-down"></span>
+            </button>
+        </div>
+    </div>
+        </div>
+        
+      
+
+    <input class="uk-button uk-button-default uk-align-center" type="submit" value="Valider">
+
+    
+    
+</form>
+{% endblock %}
