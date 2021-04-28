@@ -34,16 +34,14 @@ class PanierController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            if ($_POST['pdj'] == '') $_POST['pdj'] = NULL;
-            if ($_POST['entree'] == '') $_POST['entree'] = NULL;
-            if ($_POST['plat'] == '') $_POST['plat'] = NULL;
-            if ($_POST['dessert'] == '') $_POST['dessert'] = NULL;
-            if ($_POST['boisson'] == '') $_POST['boisson'] = NULL;
-
+            if ($_POST['pdj'] == '') $_POST['pdj'] = null;
+            if ($_POST['entree'] == '') $_POST['entree'] = null;
+            if ($_POST['plat'] == '') $_POST['plat'] = null;
+            if ($_POST['dessert'] == '') $_POST['dessert'] = null;
+            if ($_POST['boisson'] == '') $_POST['boisson'] = null;
 
             $panier = $_POST;
 
-            
             // TODO validations (length, format...)
 
             // if validation is ok, insert and redirection
@@ -67,6 +65,4 @@ class PanierController extends AbstractController
 
         return $this->twig->render('Panier/show.html.twig', ['panier' => $panier]);
     }
-
-    
 }

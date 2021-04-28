@@ -73,6 +73,6 @@ class PanierManager extends AbstractManager
         $statement->bindValue('dessert', $panier['dessert']) ;
         $statement->bindValue('boisson', $panier['boisson']) ;
         $statement->execute();
-        return $this->pdo->lastInsertId();
+        return (int)$this->pdo->lastInsertId();
     }
 }
