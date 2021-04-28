@@ -48,10 +48,10 @@ class UserController extends AbstractController
     }
 
     /**
-     * Add a new dessert
+     * Add a new User
      */
 
-    public function add(): string
+    public function inscription(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
@@ -64,7 +64,7 @@ class UserController extends AbstractController
             $id = $userManager->insert($user);
             header('Location:/User/show/' . $id);
         }
-        return $this->twig->render('User/add.html.twig');
+        return $this->twig->render('User/inscription.html.twig');
     }
 
     /**
@@ -77,5 +77,41 @@ class UserController extends AbstractController
             $userManager->delete($id);
             header('Location:/User/index');
         }
+    }
+
+    public function connexion()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($_POST['name'] != '' && $_POST['pass'] != '') {
+                $user = [];
+                $user['name'] = $_POST['name'];
+                $user['pass'] = md5($_POST['pass']);
+                $userManager = new UserManager();
+                $login = $userManager->checkLogin($user);
+                if ($userManager->checkLogin($user)) {
+                    $_SESSION['name'] = $login['name'];
+                    $_SESSION['userId'] = $login['id'];
+                    $_SESSION['adress'] = $login['adress'];
+                    $_SESSION['pass'] = $login['pass'];
+                    if ($login['is_admin'] == '1') {
+                        $_SESSION['admin'] = true;
+                    } else {
+                        $_SESSION['admin'] = false;
+                    }
+
+
+                    header('Location:/User/show/' . $login['id']);
+                } else {
+                    header('Location:/User/Connexion/');
+                }
+            }
+        }
+        return $this->twig->render('User/identification.html.twig');
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        header('location:/User/Connexion/');
     }
 }

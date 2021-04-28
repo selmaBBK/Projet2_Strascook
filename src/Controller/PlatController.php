@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\PlatManager;
+use App\Service\CheckUser;
 
 class PlatController extends AbstractController
 {
@@ -58,6 +59,8 @@ class PlatController extends AbstractController
      */
     public function add(): string
     {
+        $checkAdmin = new CheckUser();
+        $checkAdmin->checkAdmin();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $plat = array_map('trim', $_POST);

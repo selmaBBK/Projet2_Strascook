@@ -3,11 +3,15 @@
 namespace App\Controller;
 
 use App\Model\AdminManager;
+use App\Service\CheckUser;
 
 class AdminController extends AbstractController
 {
     public function index(): string
     {
+        $checkAdmin = new CheckUser();
+        $checkAdmin->checkAdmin();
+
         $adminManager = new AdminManager();
         $entrees = $adminManager->selectEntrees('id');
         $boissons = $adminManager->selectBoissons('id');

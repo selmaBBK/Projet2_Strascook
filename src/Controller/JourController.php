@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\JourManager;
+use App\Service\CheckUser;
 
 class JourController extends AbstractController
 {
@@ -25,6 +26,8 @@ class JourController extends AbstractController
      */
     public function edit(int $id): string
     {
+        $checkAdmin = new CheckUser();
+        $checkAdmin->checkAdmin();
         $jourManager = new JourManager();
         $jour = $jourManager->selectOneById($id);
 
@@ -48,6 +51,8 @@ class JourController extends AbstractController
      */
     public function add(): string
     {
+        $checkAdmin = new CheckUser();
+        $checkAdmin->checkAdmin();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $jour = array_map('trim', $_POST);

@@ -38,4 +38,13 @@ class UserManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function checkLogin(array $user)
+    {
+        $statement = $this->pdo->prepare('SELECT * FROM ' . self::TABLE . ' WHERE name=:name AND pass=:pass');
+        $statement->bindValue('name', $user['name'], \PDO::PARAM_STR);
+        $statement->bindValue('pass', $user['pass'], \PDO::PARAM_STR);
+        $statement->execute();
+        return $user = $statement->fetch();
+    }
 }

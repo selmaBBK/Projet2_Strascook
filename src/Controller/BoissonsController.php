@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\BoissonsManager;
+use App\Service\CheckUser;
 
 class BoissonsController extends AbstractController
 {
@@ -33,6 +34,8 @@ class BoissonsController extends AbstractController
      */
     public function edit(int $id): string
     {
+        $checkAdmin = new CheckUser();
+        $checkAdmin->checkAdmin();
         $boissonsManager = new BoissonsManager();
         $boissons = $boissonsManager->selectOneById($id);
 
@@ -56,6 +59,8 @@ class BoissonsController extends AbstractController
 
     public function add(): string
     {
+        $checkAdmin = new CheckUser();
+        $checkAdmin->checkAdmin();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $boissons = array_map('trim', $_POST);

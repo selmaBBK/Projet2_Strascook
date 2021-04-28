@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\DessertManager;
+use App\Service\CheckUser;
 
 class DessertController extends AbstractController
 {
@@ -35,6 +36,8 @@ class DessertController extends AbstractController
 
     public function edit(int $id): string
     {
+        $checkAdmin = new CheckUser();
+        $checkAdmin->checkAdmin();
         $dessertManager = new DessertManager();
         $dessert = $dessertManager->selectOneById($id);
 
@@ -57,6 +60,8 @@ class DessertController extends AbstractController
 
     public function add(): string
     {
+        $checkAdmin = new CheckUser();
+        $checkAdmin->checkAdmin();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $dessert = array_map('trim', $_POST);
