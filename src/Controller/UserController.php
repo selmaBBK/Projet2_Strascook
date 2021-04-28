@@ -83,6 +83,7 @@ class UserController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($_POST['name'] != '' && $_POST['pass'] != '') {
+                $user = [];
                 $user['name'] = $_POST['name'];
                 $user['pass'] = md5($_POST['pass']);
                 $userManager = new UserManager();
