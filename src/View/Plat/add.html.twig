@@ -2,7 +2,55 @@
 
 {% block content %}
     <h1>Ajouter un nouveau plat</h1>
-    {% include 'Plat/_form.html.twig' %}
+    <form class="uk-form-horizontal uk-margin-large" method="post" enctype="multipart/form-data">
+        <input type="hidden" value="{{ plat.id }}" name="id">
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-select">Catégorie</label>
+            <div class="uk-form-controls">
+                <select class="uk-select" id="form-horizontal-select" name="category" value="{{plat.category}}">
+                    <option>Veuillez choisir une catégorie...</option>
+                    <option name="category">Vegetarian</option>
+                    <option name="category">Vegan</option>
+                    <option name="category">Omnivore</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">Nom du plat</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="form-horizontal-text" type="text" placeholder="name" name="name" value="{{plat.name}}">
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-textarea">Description</label>
+            <div class="uk-form-controls">
+                <textarea class="uk-textarea" id="form-horizontal-textarea" rows="5" type="text" placeholder="description" name="description">{{plat.description}}</textarea>
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">Prix</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="form-horizontal-text" type="text" placeholder="price" name="price" value="{{plat.price}}">
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">Image (nom avec extension)</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="form-horizontal-text" type="text" placeholder="image" name="image" value="{{plat.image}}">
+            </div>
+        </div>
+        
+        <input class="uk-button uk-button-default uk-align-center uk-width-1-5" type="file" name="image" id="imageUpload" />
+
+        <input class="uk-button uk-button-default uk-align-center" type="submit" value="Valider">
+        
+    </form>
+
     <a class="uk-button uk-button-default" href="/Admin/index">Back</a>
 
 
