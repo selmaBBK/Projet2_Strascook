@@ -35,7 +35,7 @@
                 <li><a class="uk-text-emphasis" href="#">Contact</a></li>
                 {% if user is defined %}
                 <li><a class="uk-text-emphasis" href="/User/logout/">Déconnexion</a></li>
-                <li><a class="uk-text-emphasis" href="/User/show/">Mon compte</a></li>
+                <li><a class="uk-text-emphasis" href="/User/show/"{{ user.id }}>Mon compte</a></li>
                 {% endif %}
                 {% if user is defined and user['admin'] == true %}
                 <li><a class="uk-text-emphasis" href="/Admin/index/">Admin</a></li>
