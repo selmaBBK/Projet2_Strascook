@@ -8,7 +8,7 @@
     <h1 class="uk-text-center">Reservation</h1>
     <legend class="uk-legend uk-text-center">Adresse :</legend>
     <div class="uk-width-1-2 uk-align-center">
-        <input class="uk-input" type="text" placeholder="100">
+        <input class="uk-input" type="text" name="adress" placeholder="100">
     </div>
     <legend class="uk-legend uk-text-center">Choix de la formule :</legend>
    
@@ -19,7 +19,8 @@
 
     <legend class="uk-legend uk-text-center">Date (Attention on livre qu'à partir de 17h) : </legend>
     <div class="uk-width-1-2 uk-align-center">
-        <input class="uk-input" type="datetime-local" placeholder="now">
+        <input class="uk-input" type="datetime-local" data-date-format="Y-m-d H:i:s" name="date" placeholder="now">
+
     </div>
 
     <legend class="uk-legend uk-text-center">Saisie de la commande : </legend>

@@ -53,7 +53,7 @@ class PanierController extends AbstractController
             if ($_POST['boisson'] == '') {
                 $_POST['boisson'] = null;
             }
-
+            $_POST['date'] = date("Y-m-d H:i:s");
             $panier = $_POST;
 
             // TODO validations (length, format...)
@@ -61,7 +61,9 @@ class PanierController extends AbstractController
             // if validation is ok, insert and redirection
             $panierManager = new PanierManager();
             $id = $panierManager->insert($panier);
-            header('Location:/Panier/show/' . $id);
+            $panierManager->insertReservation($panier, $id);
+            header('Location:/Reservation/show/' . $id);
+
         }
         return $this->twig->render('Panier/add.html.twig', [
             'entrees' => $entrees,

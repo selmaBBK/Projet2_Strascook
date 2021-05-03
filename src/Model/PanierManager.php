@@ -10,6 +10,7 @@ class PanierManager extends AbstractManager
     public const TABLE_PLAT_DU_JOUR = 'plat_du_jour';
     public const TABLE_PLATS = 'plats';
     public const TABLE_PANIER = 'panier';
+    public const TABLE_RESERVATION = 'reservation';
 
 
     public function selectEntrees(string $orderBy = '', string $direction = 'ASC'): array
@@ -42,7 +43,7 @@ class PanierManager extends AbstractManager
         return $this->pdo->query($query)->fetchAll();
     }
 
-    public function selectPlatDuJour(string $orderBy = '', string $direction = 'ASC'): array
+     public function selectPlatDuJour(string $orderBy = '', string $direction = 'ASC'): array
     {
         $query = 'SELECT * FROM ' . static::TABLE_PLAT_DU_JOUR;
         if ($orderBy) {
@@ -91,5 +92,18 @@ class PanierManager extends AbstractManager
         $statement->bindValue('id', $id);
         $statement->execute();
         return $statement->fetch();
+    }
+
+    public function insertReservation(array $panier, int $id): int
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE_RESERVATION .
+            " (`date`, `adress`, `panier_id`, `user_id`) 
+    VALUES (:date, :adress, :panier_id, :user_id) ");
+        $statement->bindValue('adress', $panier['adress']);
+        $statement->bindValue('date', $panier['date']);
+        $statement->bindValue('user_id', $_SESSION['userId']);
+        $statement->bindValue('panier_id', $id);
+        $statement->execute();
+        return $this->pdo->lastInsertId();
     }
 }
