@@ -3,5 +3,7 @@
 {% block content %}
     <h1>Edit {{ boissons.name }}</h1>
     {% include 'Boissons/_form.html.twig' %}
+    <input class="uk-button uk-button-default uk-align-center" type="submit" value="Valider">
+    </form>
     <a class="uk-button uk-button-default" href="/Admin/index">Back</a>
 {% endblock %}

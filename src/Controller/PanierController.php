@@ -60,8 +60,8 @@ class PanierController extends AbstractController
 
             // if validation is ok, insert and redirection
             $panierManager = new PanierManager();
-            $id = $panierManager->insert($panier);
-            header('Location:/Panier/show' . $id);
+            $panierManager->insert($panier);
+            header('Location:/Admin/index');
         }
         return $this->twig->render('Panier/add.html.twig', [
             'entrees' => $entrees,
