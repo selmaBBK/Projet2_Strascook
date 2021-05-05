@@ -84,7 +84,6 @@ class EntreeController extends AbstractController
         return $this->twig->render('Entree/edit.html.twig', ['entree' => $entree]);
     }
 
-
     /**
      * Add a new entree
      */
@@ -95,29 +94,23 @@ class EntreeController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $entree = array_map('trim', $_POST);
-          
             $errors = [];
 
             if (empty($entree["name"] && isset($entree["name"]))) {
                 $errors[1] = " Erreur : Entrez un nom de plat";
             }
-
             if (($entree["category"] == 'Veuillez choisir une catégorie...' && isset($entree["category"]))) {
                 $errors[2] = "Erreur : Entrez une catégorie";
             }
-
             if (empty($entree["description"] && isset($entree["description"]))) {
                 $errors[3] = "Erreur : Entrez une description";
             }
-
             if (empty($entree["price"] && isset($entree["price"]))) {
                 $errors[4] = "Erreur : Entrez un prix";
             }
-
             if (empty($entree["image"] && isset($entree["image"]))) {
                 $errors[5] = "Erreur : Entrez une image";
             }
-
             if (!empty($errors)) {
                 return $this->twig->render('Entree/add.html.twig', ['errors' => $errors]);
             }
@@ -187,9 +180,7 @@ class EntreeController extends AbstractController
             $entreeManager = new EntreeManager();
             $entreeManager->insert($entree);
             header('Location: /Admin/index');
-          
         }
-
         return $this->twig->render('Entree/add.html.twig');
     }
 

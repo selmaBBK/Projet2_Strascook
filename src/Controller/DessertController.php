@@ -119,7 +119,6 @@ class DessertController extends AbstractController
                 return $this->twig->render('Dessert/add.html.twig', ['errors' => $errors]);
             }
             // TODO validations (length, format...)
-          
             if (empty($errors)) {
                 // if validation is ok, insert and redirection
                 $dessertManager = new DessertManager();
@@ -182,7 +181,6 @@ du nom de fichier sur le poste du client
             $dessertManager = new DessertManager();
             $id = $dessertManager->insert($dessert);
             header('Location:/Admin/index/' . $id);
-
         }
         return $this->twig->render('Dessert/add.html.twig');
     }
