@@ -89,10 +89,7 @@ class PanierController extends AbstractController
                 if ($_POST['boisson'] == '') {
                     $_POST['boisson'] = null;
                 }
-
-            $_POST['date'] = date("Y-m-d H:i:s");
-            $panier = $_POST;
-
+                $_POST['date'] = date("Y-m-d H:i:s");
                 $panier = $_POST;
 
                 // TODO validations (length, format...)
@@ -118,7 +115,6 @@ class PanierController extends AbstractController
             'plats' => $plats,
         ]);
     }
-  
     public function show(int $id): string
     {
         $panierManager = new PanierManager();
