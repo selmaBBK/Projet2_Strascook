@@ -4,7 +4,7 @@
 
         <div class="uk-container uk-container-small">
         <class="uk-grid-small " uk-grid action="" method="post">
-        <h1 class="uk-text-center">Bienvenue sur votre espace personnel, {{ user.name }} !</h1>
+        <h1 class="uk-text-center">Bienvenue sur votre espace personnel, {{ userData.name }} !</h1>
 
 <ul class="uk-comment-list">
     <li>
@@ -15,15 +15,15 @@
                         
                     </div>
                     <div class="uk-width-expand">
-                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Nom d'utilisateur : {{ user.name }}</a></h4>
-                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Adresse Postale  : {{ user.adress }}</a></h4>
+                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Nom d'utilisateur : {{ userData.name }}</a></h4>
+                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Adresse Postale  : {{ userData.adress }}</a></h4>
                     </div>
                 </div>
             </header>
 
             <p uk-margin>
-            <a class="uk-button uk-button-default" href="/User/edit/{{ user.id }}">Editer le compte</a>
-            <form action="/User/delete/{{user.id}}" method="POST"><button class="uk-button uk-button-danger" href="/User/Connexion">Supprimer le compte</button>     </form>
+            <a class="uk-button uk-button-default" href="/User/edit/{{ userData.id }}">Editer le compte</a>
+            <form action="/User/delete/{{userData.id}}" method="POST"><button class="uk-button uk-button-danger" href="/User/Connexion">Supprimer le compte</button>     </form>
 
 
 
