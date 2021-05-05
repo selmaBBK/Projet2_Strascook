@@ -2,7 +2,10 @@
 
 {% block content %}
     <h1>Ajouter un nouveau plat</h1>
-    {% include 'Plat/_form.html.twig' %}
+{% include 'Plat/_form.html.twig' %}
+    <input class="uk-button uk-button-default uk-align-center uk-width-1-5" type="file" name="image" id="imageUpload" />
+    <input class="uk-button uk-button-default uk-align-center" type="submit" value="Valider">
+    </form>
     <a class="uk-button uk-button-default" href="/Admin/index">Back</a>
 
 

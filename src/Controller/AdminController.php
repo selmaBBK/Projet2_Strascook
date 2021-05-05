@@ -9,7 +9,13 @@ class AdminController extends AbstractController
 {
     public function index(): string
     {
+        /**
+         * On instancie un objet $checkAdmin pour pouvoir utiliser la méthode chackAdmin()
+         */
         $checkAdmin = new CheckUser();
+        /**
+         * Ici si checkAdmin() est vérifié il fait rien sinon il redirige le client
+         */
         $checkAdmin->checkAdmin();
 
         $adminManager = new AdminManager();

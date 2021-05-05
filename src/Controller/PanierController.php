@@ -90,6 +90,9 @@ class PanierController extends AbstractController
                     $_POST['boisson'] = null;
                 }
 
+            $_POST['date'] = date("Y-m-d H:i:s");
+            $panier = $_POST;
+
                 $panier = $_POST;
 
                 // TODO validations (length, format...)
@@ -99,6 +102,13 @@ class PanierController extends AbstractController
                 $id = $panierManager->insert($panier);
                 header('Location:/Panier/show' . $id);
             }
+
+            // if validation is ok, insert and redirection
+            $panierManager = new PanierManager();
+
+            $id = $panierManager->insert($panier);
+            $panierManager->insertReservation($panier, $id);
+            header('Location:/Reservation/show/' . $id);
         }
         return $this->twig->render('Panier/add.html.twig', [
             'entrees' => $entrees,
@@ -108,12 +118,16 @@ class PanierController extends AbstractController
             'plats' => $plats,
         ]);
     }
-
+  
     public function show(int $id): string
     {
         $panierManager = new PanierManager();
-        $panier = $panierManager->selectOneById($id);
-
-        return $this->twig->render('Panier/show.html.twig', ['panier' => $panier]);
+        $panier = $panierManager->selectPanier($id);
+        if ($panier['plat_du_jour_id'] == 1) {
+            $pdj = $panierManager->selectPlatDuJour();
+        } else {
+            $pdj = '';
+        }
+        return $this->twig->render('Panier/show.html.twig', ['panier' => $panier, 'pdj' => $pdj]);
     }
 }

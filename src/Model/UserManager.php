@@ -42,6 +42,11 @@ class UserManager extends AbstractManager
         return $statement->execute();
     }
 
+    /**
+     * On regarde si l'utilisateur existe bien dans la bdd
+     * et qu'il a le bon mot de pass
+     *
+     */
     public function checkLogin(array $user)
     {
         $statement = $this->pdo->prepare('SELECT * FROM ' . self::TABLE . ' WHERE pseudo=:pseudo AND pass=:pass
