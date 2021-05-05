@@ -10,6 +10,6 @@ class CheckUserTest extends TestCase
     public function testCheckLogin()
     {
         $login = new CheckUser();
-        $this->assertEquals(True, $login->checkLogin());
+        $this->assertEquals(true, $login->checkLogin());
     }
 }
