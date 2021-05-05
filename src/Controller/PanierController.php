@@ -94,7 +94,6 @@ class PanierController extends AbstractController
             }
 
             if (empty($errors)) {
-
                 // TODO validations (length, format...)
 
                 // if validation is ok, insert and redirection
