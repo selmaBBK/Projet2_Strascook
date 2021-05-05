@@ -52,7 +52,7 @@ WHERE r.id=$id");
     /**
     Update Reservation in database
      */
-    public function update(array $res): bool
+    public function update(array $res)
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `adress` = :adress WHERE id=:id");
         $statement->bindValue('id', $res['id'], \PDO::PARAM_INT);
