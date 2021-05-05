@@ -22,7 +22,7 @@ class UserController extends AbstractController
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);
 
-        return $this->twig->render('User/show.html.twig', ['user' => $user]);
+        return $this->twig->render('User/show.html.twig', ['userData' => $user]);
     }
 
     /**
@@ -39,6 +39,8 @@ class UserController extends AbstractController
             $user = array_map('trim', $_POST);
 
             // TODO validations (length, format...)
+
+            $user['pass'] = md5($_POST['pass']) ;
 
             // if validation is ok, update and redirection
             $userManager->update($user);
@@ -136,7 +138,7 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userManager = new UserManager();
             $userManager->delete($id);
-            header('Location:/User/index');
+            $this->logout();
         }
     }
 
