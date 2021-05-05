@@ -1,18 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Ta commande a été validé sale chien</h1>
-
-public function selectOneById(int $id)
-    {
-        // prepared request
-        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE id=:id");
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        $statement->execute();
-
-        return $statement->fetch();
-    }
-
-
+    <h1>Ta commande a été validé</h1>
+    {% for pj in pdj %}
+        <li>{{ pj.name }}. {{ pj.price }}</li>
+    {% endfor %}
+    {{panier['entreeName']}}  {{panier['entreePrice']}}
+    {{panier['platName']}}  {{panier['platPrice']}}
+    {{panier['dessertName']}}  {{panier['dessertPrice']}}
+    {{panier['boissonName']}}  {{panier['boissonPrice']}}
     <a href="/Panier/add">Back</a>
 {% endblock %}

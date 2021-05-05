@@ -10,6 +10,7 @@ class PanierManager extends AbstractManager
     public const TABLE_PLAT_DU_JOUR = 'plat_du_jour';
     public const TABLE_PLATS = 'plats';
     public const TABLE_PANIER = 'panier';
+    public const TABLE_RESERVATION = 'reservation';
 
 
     /**
@@ -54,6 +55,7 @@ class PanierManager extends AbstractManager
         return $this->pdo->query($query)->fetchAll();
     }
 
+
     /**
      * On selectionne le plat du jour
      *
@@ -96,6 +98,36 @@ class PanierManager extends AbstractManager
         $statement->bindValue('plat', $panier['plat']);
         $statement->bindValue('dessert', $panier['dessert']);
         $statement->bindValue('boisson', $panier['boisson']);
+        $statement->execute();
+        return (int)$this->pdo->lastInsertId();
+    }
+    public function selectPanier(int $id)
+    {
+        $statement = $this->pdo->prepare("SELECT e.name entreeName, e.price entreePrice,
+       pl.name platName, pl.price platPrice, d.name dessertName,
+       d.price dessertPrice, b.name boissonName, d.price boissonPrice,
+       pa.plat_du_jour_id FROM " . self::TABLE_PANIER .
+            " pa LEFT JOIN " . self::TABLE_ENTREES . " e ON e.id=pa.entree_id 
+        LEFT JOIN " . self::TABLE_PLATS . " pl ON pl.id=pa.plats_id 
+        LEFT JOIN " . self::TABLE_DESSERTS . " d ON d.id=pa.desserts_id 
+        LEFT JOIN " . self::TABLE_BOISSONS . " b ON b.id=pa.boissons_id 
+        LEFT JOIN " . self::TABLE_PLAT_DU_JOUR . " pdj ON pdj.id=pa.plat_du_jour_id
+        Where pa.id=:id");
+
+        $statement->bindValue('id', $id);
+        $statement->execute();
+        return $statement->fetch();
+    }
+
+    public function insertReservation(array $panier, int $id): int
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE_RESERVATION .
+            " (`date`, `adress`, `panier_id`, `user_id`) 
+    VALUES (:date, :adress, :panier_id, :user_id) ");
+        $statement->bindValue('adress', $panier['adress']);
+        $statement->bindValue('date', $panier['date']);
+        $statement->bindValue('user_id', $_SESSION['userId']);
+        $statement->bindValue('panier_id', $id);
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }

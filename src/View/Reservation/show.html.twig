@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Ta commande a été validé</h1>
+    {% for pj in pdj %}
+        <li>{{ pj.name }}. {{ pj.price }}</li>
+    {% endfor %}
+    {{reservation['userName']}}  {{reservation['date']}} {{reservation['adress']}} {{reservation['addition']}}
+    {{reservation['entreeName']}}  {{reservation['entreePrice']}}
+    {{reservation['platName']}}  {{reservation['platPrice']}}
+    {{reservation['dessertName']}}  {{reservationr['dessertPrice']}}
+    {{reservation['boissonName']}}  {{reservation['boissonPrice']}}
+    <a href="/Reservation/add">Back</a>
+{% endblock %}

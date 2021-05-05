@@ -8,7 +8,7 @@
     <h1 class="uk-text-center">Reservation</h1>
     <legend class="uk-legend uk-text-center">Adresse :</legend>
     <div class="uk-width-1-2 uk-align-center">
-        <input class="uk-input" type="text" placeholder="100">
+        <input class="uk-input" type="text" name="adress" placeholder="100">
     </div>
     <legend class="uk-legend uk-text-center">Choix de la formule :</legend>
    
@@ -19,7 +19,8 @@
 
     <legend class="uk-legend uk-text-center">Date (Attention on livre qu'à partir de 17h) : </legend>
     <div class="uk-width-1-2 uk-align-center">
-        <input class="uk-input" type="datetime-local" placeholder="now">
+        <input class="uk-input" type="datetime-local" data-date-format="Y-m-d H:i:s" name="date" placeholder="now">
+
     </div>
 
     <legend class="uk-legend uk-text-center">Saisie de la commande : </legend>
@@ -33,9 +34,8 @@
         <div uk-form-custom="target: > * > span:first-child">
             <select name='pdj'>
                 <option value="">Selectionne ton choix...</option>
-                {% for platDJ in platDuJour %}
-                <option value="{{platDJ.id}}">{{platDJ.name}} - {{platDJ.category}}</option>
-                {% endfor %}
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
             </select>
             <button class="uk-button uk-button-default" type="button" tabindex="-1">
                 <span></span>
