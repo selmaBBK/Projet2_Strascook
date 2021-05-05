@@ -25,7 +25,7 @@ class ReservationManager extends AbstractManager
        pl.name platName, pl.price platPrice, d.name dessertName, d.price dessertPrice, b.name boissonName,
        d.price boissonPrice, pdj.name pdjName,
        pdj.price pdjPrice, SUM(e.price + pl.price + d.price + b.price) addition FROM "
-            . self::TABLE ." r 
+            . self::TABLE . " r 
 JOIN " . self::TABLE_USER . " u ON u.id=user_id 
 JOIN " . self::TABLE_PANIER . " pa ON pa.id=panier_id
 LEFT JOIN " . self::TABLE_ENTREES . " e ON e.id=pa.entree_id 
