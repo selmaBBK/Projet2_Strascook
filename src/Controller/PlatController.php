@@ -67,11 +67,9 @@ class PlatController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('Plat/add.html.twig', ['errors' => $errors]);
-
             }
 
             if (empty($errors)) {
-
                 // TODO validations (length, format...)
 
                 // if validation is ok, update and redirection
@@ -119,11 +117,9 @@ class PlatController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('Plat/add.html.twig', ['errors' => $errors]);
-
             }
 
             if (empty($errors)) {
-
                 // TODO validations (length, format...)
 
                 // if validation is ok, insert and redirection

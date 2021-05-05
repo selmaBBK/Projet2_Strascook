@@ -67,12 +67,9 @@ class BoissonsController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('Boissons/add.html.twig', ['errors' => $errors]);
-
             }
 
             if (empty($errors)) {
-
-                // if validation is ok, update and redirection
                 $boissonsManager->update($boissons);
                 header('Location: /Admin/index/' . $id);
             }
@@ -117,11 +114,9 @@ class BoissonsController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('Boissons/add.html.twig', ['errors' => $errors]);
-
             }
 
             if (empty($errors)) {
-
                 // if validation is ok, insert and redirection
                 $boissonsManager = new BoissonsManager();
                 $id = $boissonsManager->insert($boissons);

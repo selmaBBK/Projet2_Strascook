@@ -70,7 +70,6 @@ class EntreeController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('Entree/add.html.twig', ['errors' => $errors]);
-
             }
 
             if (empty($errors)) {
@@ -121,7 +120,6 @@ class EntreeController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('Entree/add.html.twig', ['errors' => $errors]);
-
             }
 
             if (empty($errors)) {

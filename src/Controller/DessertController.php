@@ -69,7 +69,6 @@ class DessertController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('Dessert/add.html.twig', ['errors' => $errors]);
-
             }
             // TODO validations (length, format...)
 
@@ -118,7 +117,6 @@ class DessertController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('Dessert/add.html.twig', ['errors' => $errors]);
-
             }
             // TODO validations (length, format...)
 

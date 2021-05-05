@@ -59,7 +59,6 @@ class JourController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('PlatDuJour/edit.html.twig', ['errors' => $errors]);
-
             }
 
             if (empty($errors)) {
@@ -110,7 +109,6 @@ class JourController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('PlatDuJour/add.html.twig', ['errors' => $errors]);
-
             }
 
             if (empty($errors)) {

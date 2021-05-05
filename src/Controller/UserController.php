@@ -73,7 +73,7 @@ class UserController extends AbstractController
                 $errors[3] = "⚠️ Erreur : Entrez un mot de passe";
             }
 
-            if (strlen($user["pass"]) < 8){
+            if (strlen($user["pass"]) < 8) {
                 $errors[20] = '⚠️ Erreur : Mot de passe trop court';
             }
 
@@ -89,24 +89,22 @@ class UserController extends AbstractController
                 $errors[6] = "⚠️ Erreur : Entrez un pseudo ";
             } else {
                 $userManager = new UserManager();
-                $i = $userManager->checkPseudo($user);
-                if ($i) {
+                $checkPseudo = $userManager->checkPseudo($user);
+                if ($checkPseudo) {
                     $errors[14] = '⚠️ Ce pseudo existe déjà trouve-en un autre 😁';
                 }
             }
 
             if (!empty($user["pseudo"]) && !preg_match("/^[a-zA-Z0-9_]+$/", $user['pseudo'])) {
-
                 $errors[7] = "⚠️ Votre pseudo n'est pas valide (ne pas insérer de caractères spéciaux) ";
             }
-
 
             if (empty($user["mail"] && isset($user["mail"]))) {
                 $errors[8] = "⚠️ Erreur : Entrez une adresse-mail";
             } else {
                 $userManager = new UserManager();
-                $i = $userManager->checkMail($user);
-                if ($i) {
+                $checkMail = $userManager->checkMail($user);
+                if ($checkMail) {
                     $errors[16] = '⚠️ Adresse mail est déjà relié à un compte';
                 }
             }
@@ -117,7 +115,6 @@ class UserController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('User/inscription.html.twig', ['errors' => $errors]);
-
             }
             // TODO validations (length, format...)
 
@@ -146,28 +143,25 @@ class UserController extends AbstractController
     public function connexion()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $user = array_map('trim', $_POST);
-
             $errors = [];
-
 
             if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                 $errors[0] = "⚠️ Erreur : Entrez une adresse e-mail";
-            }else {
+            } else {
                 $userManager = new UserManager();
-                $i = $userManager->checkMail($user);
-                if (!$i) {
+                $checkMail = $userManager->checkMail($user);
+                if (!$checkMail) {
                     $errors[98] = '⚠️ Email ou mot de passe incorrect 🤥';
                 }
             }
 
             if (empty($user["pass"] && isset($user["pass"]))) {
                 $errors[2] = "⚠️ Erreur : Entrez un mot de passe";
-            }else {
+            } else {
                 $userManager = new UserManager();
-                $i = $userManager->checkPass($user);
-                if (!$i) {
+                $checkPass = $userManager->checkPass($user);
+                if (!$checkPass) {
                     $errors[98] = '⚠️ Email ou mot de passe incorrect 🤥';
                 }
             }
@@ -175,11 +169,9 @@ class UserController extends AbstractController
 
             if (!empty($errors)) {
                 return $this->twig->render('User/identification.html.twig', ['errors' => $errors]);
-
             }
 
             if (empty($errors)) {
-
                 if ($_POST['mail'] != '' && $_POST['pass'] != '') {
                     $user = [];
                     $user['pseudo'] = $_POST['mail'];

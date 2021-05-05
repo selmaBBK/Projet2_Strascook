@@ -53,7 +53,6 @@ class UserManager extends AbstractManager
         $statement->execute();
 
         return $user = $statement->fetch();
-
     }
 
     public function checkPseudo(array $user)
