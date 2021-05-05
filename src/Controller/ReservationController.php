@@ -67,29 +67,6 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * Add a new Reservation
-     */
-
-    public function add(): string
-    {
-        $checkUser = new checkUser();
-        $checkUser->checkLogin();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $reservation = $_POST;
-
-            // TODO validations (length, format...)
-
-            // if validation is ok, insert and redirection
-            $reservationManager = new ReservationManager();
-            $id = $reservationManager->insert($reservation);
-            header('Location:/Panier/show/' . $id);
-        }
-        return $this->twig->render('Panier/add.html.twig', [
-
-        ]);
-    }
-
-    /**
      * Show information for a specific Reservation
      */
     public function show(int $id): string
