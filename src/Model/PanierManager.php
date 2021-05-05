@@ -129,6 +129,6 @@ class PanierManager extends AbstractManager
         $statement->bindValue('user_id', $_SESSION['userId']);
         $statement->bindValue('panier_id', $id);
         $statement->execute();
-        return $this->pdo->lastInsertId();
+        return (int)$this->pdo->lastInsertId();
     }
 }
