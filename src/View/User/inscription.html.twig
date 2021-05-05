@@ -14,10 +14,42 @@
                     <div class="uk-margin">
                         <label for="firstname" class="uk-form-label">Firstname</label>
                         <input id="firstname" type="text" name="name" autocomplete="firtsname" autofocus="autofocus" class="uk-input uk-form-large">
+                        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                            {{ errors[1] }}
+                        </div>
                     </div>
                     <div class="uk-margin">
-                        <label for="mail" class="uk-form-label">Adresse</label>
+                        <label for="mail" class="uk-form-label">Adresse postale</label>
                         <input id="mail" type="text" name="adress" autofocus="autofocus" class="uk-input uk-form-large">
+                        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                            {{ errors[2] }}
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-form-label uk-flex uk-flex-between">
+                            <div class="uk-flex uk-flex-between">
+                                <label for="mail" class="uk-">E-mail</label>
+                            </div>
+                        </div>
+                        <input id="mail" type="email" name="mail" autocomplete="mail" class="uk-input uk-form-large">
+                        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                            {{ errors[8] }}
+                            {{ errors[9] }}
+                            {{ errors[16] }}
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-form-label uk-flex uk-flex-between">
+                            <div class="uk-flex uk-flex-between">
+                                <label for="pseudo" class="uk-">Pseudo</label>
+                            </div>
+                        </div>
+                        <input id="pseudo" type="text" name="pseudo" autocomplete="pseudo" class="uk-input uk-form-large">
+                        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                            {{ errors[6] }}
+                            {{ errors[7] }}
+                            {{ errors[14] }}
+                        </div>
                     </div>
                     <div class="uk-margin">
                         <div class="uk-form-label uk-flex uk-flex-between">
@@ -26,6 +58,10 @@
                             </div>
                         </div>
                         <input id="password" type="password" name="pass" autocomplete="current-password" class="uk-input uk-form-large">
+                        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                            {{ errors[3] }}
+                            {{ errors[20] }}
+                        </div>
                     </div>
                     <div class="uk-margin">
                         <div class="uk-form-label uk-flex uk-flex-between">
@@ -34,6 +70,11 @@
                             </div>
                         </div>
                         <input id="confirmPassword" type="password" name="repass" autocomplete="current-password" class="uk-input uk-form-large">
+                        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                            {{ errors[4] }}
+                            {{ errors[5] }}
+
+                        </div>
                     </div>
                     <div class="uk-margin-medium-top uk-text-center">
                         <button type="submit" class="uk-button uk-button-primary uk-button-large">Sign up</button>

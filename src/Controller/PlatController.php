@@ -43,11 +43,39 @@ class PlatController extends AbstractController
             // clean $_POST data
             $plat = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
+            $errors = [];
 
-            // if validation is ok, update and redirection
-            $platManager->update($plat);
-            header('Location: /Admin/index');
+            if (empty($plat["name"] && isset($plat["name"]))) {
+                $errors[1] = " Erreur : Entrez un nom de plat";
+            }
+
+            if (($plat["category"] == 'Veuillez choisir une catégorie...' && isset($plat["category"]))) {
+                $errors[2] = "Erreur : Entrez une catégorie";
+            }
+
+            if (empty($plat["description"] && isset($plat["description"]))) {
+                $errors[3] = "Erreur : Entrez une description";
+            }
+
+            if (empty($plat["price"] && isset($plat["price"]))) {
+                $errors[4] = "Erreur : Entrez un prix";
+            }
+
+            if (empty($plat["image"] && isset($plat["image"]))) {
+                $errors[5] = "Erreur : Entrez une image";
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('Plat/add.html.twig', ['errors' => $errors]);
+            }
+
+            if (empty($errors)) {
+                // TODO validations (length, format...)
+
+                // if validation is ok, update and redirection
+                $platManager->update($plat);
+                header('Location: /Admin/index');
+            }
         }
 
         return $this->twig->render('Plat/edit.html.twig', ['plat' => $plat,]);
@@ -65,8 +93,42 @@ class PlatController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $plat = array_map('trim', $_POST);
-            // TODO validations (length, format...)
+          
+            $errors = [];
 
+            if (empty($plat["name"] && isset($plat["name"]))) {
+                $errors[1] = " Erreur : Entrez un nom de plat";
+            }
+
+            if (($plat["category"] == 'Veuillez choisir une catégorie...' && isset($plat["category"]))) {
+                $errors[2] = "Erreur : Entrez une catégorie";
+            }
+
+            if (empty($plat["description"] && isset($plat["description"]))) {
+                $errors[3] = "Erreur : Entrez une description";
+            }
+
+            if (empty($plat["price"] && isset($plat["price"]))) {
+                $errors[4] = "Erreur : Entrez un prix";
+            }
+
+            if (empty($plat["image"] && isset($plat["image"]))) {
+                $errors[5] = "Erreur : Entrez une image";
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('Plat/add.html.twig', ['errors' => $errors]);
+            }
+
+            if (empty($errors)) {
+                // TODO validations (length, format...)
+
+                // if validation is ok, insert and redirection
+                $platManager = new PlatManager();
+                $id = $platManager->insert($plat);
+                header('Location: /plat/show/' . $id);
+            }
+          
             //on gère l'upload ici
             $errors = [];
             $uploadDir = __DIR__ . '/public/assets/images/';

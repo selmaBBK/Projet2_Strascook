@@ -5,16 +5,22 @@
     <div class="uk-section uk-section-default uk-section-large">
         <div class="uk-container uk-container-small">
 
+            {{ rcs }}
             <div id="login" class="uk-width-large uk-margin-auto">
                 <form action="#" method="post" class="uk-form-stacked">
                     <h1 class="uk-h2 uk-margin-medium-bottom uk-flex uk-flex-center">S'identifier</h1>
                     <div class="uk-text-lead uk-text-danger" style="display: none;">
+                    </div>
 
-                    </div>
                     <div class="uk-margin">
-                        <label for="user" class="uk-form-label">Email or Username</label>
-                        <input id="user" type="text" name="name" autocomplete="username" autofocus="autofocus" class="uk-input uk-form-large">
+                        <label for="pseudo" class="uk-form-label">Email</label>
+                        <input id="pseudo" type="text" name="mail"  autocomplete="pseudo" autofocus="autofocus" class="uk-input uk-form-large">
+                        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                            {{ errors[0] }}
+                            {{ errors[98] }}
+                        </div>
                     </div>
+
                     <div class="uk-margin">
                         <div class="uk-form-label uk-flex uk-flex-between">
                             <div class="uk-flex uk-flex-between">
@@ -23,6 +29,9 @@
                             </div>
                         </div>
                         <input id="password" type="password" name="pass" autocomplete="current-password" class="uk-input uk-form-large">
+                        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                            {{ errors[2] }}
+                        </div>
                     </div>
                     <div class="uk-margin-medium-top uk-text-center">
                         <button type="submit" class="uk-button uk-button-primary uk-button-large">Sign in</button>
