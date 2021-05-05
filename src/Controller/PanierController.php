@@ -64,8 +64,6 @@ class PanierController extends AbstractController
             $id = $panierManager->insert($panier);
             $panierManager->insertReservation($panier, $id);
             header('Location:/Reservation/show/' . $id);
-
-
         }
         return $this->twig->render('Panier/add.html.twig', [
             'entrees' => $entrees,
