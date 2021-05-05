@@ -77,11 +77,8 @@ class PlatController extends AbstractController
                 header('Location: /Admin/index');
             }
         }
-
         return $this->twig->render('Plat/edit.html.twig', ['plat' => $plat,]);
     }
-
-
     /**
      * Add a new plat
      */
@@ -89,29 +86,23 @@ class PlatController extends AbstractController
     {
         $checkAdmin = new CheckUser();
         $checkAdmin->checkAdmin();
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $plat = array_map('trim', $_POST);
-          
             $errors = [];
 
             if (empty($plat["name"] && isset($plat["name"]))) {
                 $errors[1] = " Erreur : Entrez un nom de plat";
             }
-
             if (($plat["category"] == 'Veuillez choisir une catégorie...' && isset($plat["category"]))) {
                 $errors[2] = "Erreur : Entrez une catégorie";
             }
-
             if (empty($plat["description"] && isset($plat["description"]))) {
                 $errors[3] = "Erreur : Entrez une description";
             }
-
             if (empty($plat["price"] && isset($plat["price"]))) {
                 $errors[4] = "Erreur : Entrez un prix";
             }
-
             if (empty($plat["image"] && isset($plat["image"]))) {
                 $errors[5] = "Erreur : Entrez une image";
             }
@@ -128,7 +119,6 @@ class PlatController extends AbstractController
                 $id = $platManager->insert($plat);
                 header('Location: /plat/show/' . $id);
             }
-          
             //on gère l'upload ici
             $errors = [];
             $uploadDir = __DIR__ . '/public/assets/images/';

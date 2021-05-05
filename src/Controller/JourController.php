@@ -84,33 +84,26 @@ class JourController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $jour = array_map('trim', $_POST);
-          
             $errors = [];
 
             if (empty($jour["name"] && isset($jour["name"]))) {
                 $errors[1] = " Erreur : Entrez un nom de plat";
             }
-
             if (($jour["category"] == 'Veuillez choisir une catégorie...' && isset($jour["category"]))) {
                 $errors[2] = "Erreur : Entrez une catégorie";
             }
-
             if (empty($jour["description"] && isset($jour["description"]))) {
                 $errors[3] = "Erreur : Entrez une description";
             }
-
             if (empty($jour["price"] && isset($jour["price"]))) {
                 $errors[4] = "Erreur : Entrez un prix";
             }
-
             if (empty($jour["image"] && isset($jour["image"]))) {
                 $errors[5] = "Erreur : Entrez une image";
             }
-
             if (!empty($errors)) {
                 return $this->twig->render('PlatDuJour/add.html.twig', ['errors' => $errors]);
             }
-
             if (empty($errors)) {
                 // TODO validations (length, format...)
 
@@ -180,8 +173,6 @@ class JourController extends AbstractController
 
         return $this->twig->render('PlatDuJour/add.html.twig');
     }
-
-
     /**
      * Delete a specific plat du jour
      */

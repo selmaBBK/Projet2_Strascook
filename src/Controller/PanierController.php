@@ -40,15 +40,15 @@ class PanierController extends AbstractController
         $checkUser->checkLogin();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $pannier = array_map('trim', $_POST);
+            $panier = $_POST;
 
             $errors = [];
 
-            if (isset($pannier['date']) && empty($pannier['name'])) {
+            if (isset($panier['date']) && empty($panier['name'])) {
                 $errors[5] = '⚠️ Entrez une date de commande';
             }
 
-            if (isset($pannier['date']) && !empty($pannier['date'])) {
+            if (isset($panier['date']) && !empty($panier['date'])) {
                 $presentTime = date("Y-m-d H:i:s");
                 $diff = abs(strtotime($_POST['date']) - strtotime($presentTime));
                 $hour = (int)date('H', strtotime($_POST['date']));
@@ -89,11 +89,7 @@ class PanierController extends AbstractController
                 if ($_POST['boisson'] == '') {
                     $_POST['boisson'] = null;
                 }
-
-            $_POST['date'] = date("Y-m-d H:i:s");
-            $panier = $_POST;
-
-                $panier = $_POST;
+                $_POST['date'] = date("Y-m-d H:i:s");
 
                 // TODO validations (length, format...)
 
@@ -118,7 +114,6 @@ class PanierController extends AbstractController
             'plats' => $plats,
         ]);
     }
-  
     public function show(int $id): string
     {
         $panierManager = new PanierManager();
