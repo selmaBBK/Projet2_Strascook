@@ -19,18 +19,20 @@ class ReservationManager extends AbstractManager
      */
     public function selectAllReservation(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT r.adress, r.date, pa.plat_du_jour_id, u.name userName, r.adress userAdress,
+        $statement = $this->pdo->prepare("SELECT r.adress,
+        r.date, pa.plat_du_jour_id, u.name userName, r.adress userAdress,
        e.name entreeName, e.price entreePrice,
        pl.name platName, pl.price platPrice, d.name dessertName, d.price dessertPrice, b.name boissonName,
-       d.price boissonPrice, pdj.name pdjName, pdj.price pdjPrice, SUM(e.price + pl.price + d.price + b.price) addition FROM "
+       d.price boissonPrice, pdj.name pdjName,
+       pdj.price pdjPrice, SUM(e.price + pl.price + d.price + b.price) addition FROM "
             . self::TABLE ." r 
-JOIN ". self::TABLE_USER ." u ON u.id=user_id 
-JOIN ". self::TABLE_PANIER ." pa ON pa.id=panier_id
-LEFT JOIN ". self::TABLE_ENTREES ." e ON e.id=pa.entree_id 
-LEFT JOIN ". self::TABLE_PLATS ." pl ON pl.id=pa.plats_id 
-LEFT JOIN ". self::TABLE_DESSERTS ." d ON d.id=pa.desserts_id 
-LEFT JOIN ". self::TABLE_BOISSONS ." b ON b.id=pa.boissons_id 
-LEFT JOIN ". self::TABLE_PLAT_DU_JOUR ." pdj ON pdj.id=pa.plat_du_jour_id
+JOIN " . self::TABLE_USER . " u ON u.id=user_id 
+JOIN " . self::TABLE_PANIER . " pa ON pa.id=panier_id
+LEFT JOIN " . self::TABLE_ENTREES . " e ON e.id=pa.entree_id 
+LEFT JOIN " . self::TABLE_PLATS . " pl ON pl.id=pa.plats_id 
+LEFT JOIN " . self::TABLE_DESSERTS . " d ON d.id=pa.desserts_id 
+LEFT JOIN " . self::TABLE_BOISSONS . " b ON b.id=pa.boissons_id 
+LEFT JOIN " . self::TABLE_PLAT_DU_JOUR . " pdj ON pdj.id=pa.plat_du_jour_id
 WHERE r.id=$id");
         $statement->bindValue('id', $id);
         $statement->execute();
