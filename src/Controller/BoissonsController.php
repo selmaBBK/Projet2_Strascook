@@ -39,15 +39,43 @@ class BoissonsController extends AbstractController
         $boissonsManager = new BoissonsManager();
         $boissons = $boissonsManager->selectOneById($id);
 
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $boissons = array_map('trim', $_POST);
 
+            $errors = [];
 
-            // if validation is ok, update and redirection
-            $boissonsManager->update($boissons);
-            header('Location: /Admin/index/' . $id);
+            if (empty($boissons["name"] && isset($boissons["name"]))) {
+                $errors[1] = " Erreur : Entrez un nom de plat";
+            }
+
+            if (($boissons["category"] == 'Veuillez choisir une catégorie...' && isset($boissons["category"]))) {
+                $errors[2] = "Erreur : Entrez une catégorie";
+            }
+
+            if (empty($boissons["description"] && isset($boissons["description"]))) {
+                $errors[3] = "Erreur : Entrez une description";
+            }
+
+            if (empty($boissons["price"] && isset($boissons["price"]))) {
+                $errors[4] = "Erreur : Entrez un prix";
+            }
+
+            if (empty($boissons["image"] && isset($boissons["image"]))) {
+                $errors[5] = "Erreur : Entrez une image";
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('Boissons/add.html.twig', ['errors' => $errors]);
+
+            }
+
+            if (empty($errors)) {
+
+                // if validation is ok, update and redirection
+                $boissonsManager->update($boissons);
+                header('Location: /Admin/index/' . $id);
+            }
         }
 
         return $this->twig->render('Boissons/edit.html.twig', ['boissons' => $boissons,]);
@@ -65,11 +93,40 @@ class BoissonsController extends AbstractController
             // clean $_POST data
             $boissons = array_map('trim', $_POST);
 
+            $errors = [];
 
-            // if validation is ok, insert and redirection
-            $boissonsManager = new BoissonsManager();
-            $id = $boissonsManager->insert($boissons);
-            header('Location:/Admin/index/' . $id);
+            if (empty($boissons["name"] && isset($boissons["name"]))) {
+                $errors[1] = " Erreur : Entrez un nom de plat";
+            }
+
+            if (($boissons["category"] == 'Veuillez choisir une catégorie...' && isset($boissons["category"]))) {
+                $errors[2] = "Erreur : Entrez une catégorie";
+            }
+
+            if (empty($boissons["description"] && isset($boissons["description"]))) {
+                $errors[3] = "Erreur : Entrez une description";
+            }
+
+            if (empty($boissons["price"] && isset($boissons["price"]))) {
+                $errors[4] = "Erreur : Entrez un prix";
+            }
+
+            if (empty($boissons["image"] && isset($boissons["image"]))) {
+                $errors[5] = "Erreur : Entrez une image";
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('Boissons/add.html.twig', ['errors' => $errors]);
+
+            }
+
+            if (empty($errors)) {
+
+                // if validation is ok, insert and redirection
+                $boissonsManager = new BoissonsManager();
+                $id = $boissonsManager->insert($boissons);
+                header('Location:/Admin/index/' . $id);
+            }
         }
 
         return $this->twig->render('Boissons/add.html.twig');

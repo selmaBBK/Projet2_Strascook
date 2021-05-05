@@ -35,11 +35,40 @@ class JourController extends AbstractController
             // clean $_POST data
             $jour = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
+            $errors = [];
 
-            // if validation is ok, update and redirection
-            $jourManager->update($jour);
-            header('Location: /Admin/index');
+            if (empty($jour["name"] && isset($jour["name"]))) {
+                $errors[1] = " Erreur : Entrez un nom de plat";
+            }
+
+            if (($jour["category"] == 'Veuillez choisir une catégorie...' && isset($jour["category"]))) {
+                $errors[2] = "Erreur : Entrez une catégorie";
+            }
+
+            if (empty($jour["description"] && isset($jour["description"]))) {
+                $errors[3] = "Erreur : Entrez une description";
+            }
+
+            if (empty($jour["price"] && isset($jour["price"]))) {
+                $errors[4] = "Erreur : Entrez un prix";
+            }
+
+            if (empty($jour["image"] && isset($jour["image"]))) {
+                $errors[5] = "Erreur : Entrez une image";
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('PlatDuJour/edit.html.twig', ['errors' => $errors]);
+
+            }
+
+            if (empty($errors)) {
+                // TODO validations (length, format...)
+
+                // if validation is ok, update and redirection
+                $jourManager->update($jour);
+                header('Location: /Admin/index');
+            }
         }
 
         return $this->twig->render('PlatDuJour/edit.html.twig', ['jour' => $jour]);
@@ -57,12 +86,41 @@ class JourController extends AbstractController
             // clean $_POST data
             $jour = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
+            $errors = [];
 
-            // if validation is ok, insert and redirection
-            $jourManager = new JourManager();
-            $jourManager->insert($jour);
-            header('Location: /Admin/index');
+            if (empty($jour["name"] && isset($jour["name"]))) {
+                $errors[1] = " Erreur : Entrez un nom de plat";
+            }
+
+            if (($jour["category"] == 'Veuillez choisir une catégorie...' && isset($jour["category"]))) {
+                $errors[2] = "Erreur : Entrez une catégorie";
+            }
+
+            if (empty($jour["description"] && isset($jour["description"]))) {
+                $errors[3] = "Erreur : Entrez une description";
+            }
+
+            if (empty($jour["price"] && isset($jour["price"]))) {
+                $errors[4] = "Erreur : Entrez un prix";
+            }
+
+            if (empty($jour["image"] && isset($jour["image"]))) {
+                $errors[5] = "Erreur : Entrez une image";
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('PlatDuJour/add.html.twig', ['errors' => $errors]);
+
+            }
+
+            if (empty($errors)) {
+                // TODO validations (length, format...)
+
+                // if validation is ok, insert and redirection
+                $jourManager = new JourManager();
+                $jourManager->insert($jour);
+                header('Location: /Admin/index');
+            }
         }
 
         return $this->twig->render('PlatDuJour/add.html.twig');

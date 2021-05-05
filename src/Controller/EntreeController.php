@@ -46,11 +46,40 @@ class EntreeController extends AbstractController
             // clean $_POST data
             $entree = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
+            $errors = [];
 
-            // if validation is ok, update and redirection
-            $entreeManager->update($entree);
-            header('Location: /Admin/index');
+            if (empty($entree["name"] && isset($entree["name"]))) {
+                $errors[1] = " Erreur : Entrez un nom de plat";
+            }
+
+            if (($entree["category"] == 'Veuillez choisir une catégorie...' && isset($entree["category"]))) {
+                $errors[2] = "Erreur : Entrez une catégorie";
+            }
+
+            if (empty($entree["description"] && isset($entree["description"]))) {
+                $errors[3] = "Erreur : Entrez une description";
+            }
+
+            if (empty($entree["price"] && isset($entree["price"]))) {
+                $errors[4] = "Erreur : Entrez un prix";
+            }
+
+            if (empty($entree["image"] && isset($entree["image"]))) {
+                $errors[5] = "Erreur : Entrez une image";
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('Entree/add.html.twig', ['errors' => $errors]);
+
+            }
+
+            if (empty($errors)) {
+                // TODO validations (length, format...)
+
+                // if validation is ok, update and redirection
+                $entreeManager->update($entree);
+                header('Location: /Admin/index');
+            }
         }
 
         return $this->twig->render('Entree/edit.html.twig', ['entree' => $entree]);
@@ -68,12 +97,41 @@ class EntreeController extends AbstractController
             // clean $_POST data
             $entree = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
+            $errors = [];
 
-            // if validation is ok, insert and redirection
-            $entreeManager = new EntreeManager();
-            $entreeManager->insert($entree);
-            header('Location: /Admin/index');
+            if (empty($entree["name"] && isset($entree["name"]))) {
+                $errors[1] = " Erreur : Entrez un nom de plat";
+            }
+
+            if (($entree["category"] == 'Veuillez choisir une catégorie...' && isset($entree["category"]))) {
+                $errors[2] = "Erreur : Entrez une catégorie";
+            }
+
+            if (empty($entree["description"] && isset($entree["description"]))) {
+                $errors[3] = "Erreur : Entrez une description";
+            }
+
+            if (empty($entree["price"] && isset($entree["price"]))) {
+                $errors[4] = "Erreur : Entrez un prix";
+            }
+
+            if (empty($entree["image"] && isset($entree["image"]))) {
+                $errors[5] = "Erreur : Entrez une image";
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('Entree/add.html.twig', ['errors' => $errors]);
+
+            }
+
+            if (empty($errors)) {
+                // TODO validations (length, format...)
+
+                // if validation is ok, insert and redirection
+                $entreeManager = new EntreeManager();
+                $entreeManager->insert($entree);
+                header('Location: /Admin/index');
+            }
         }
 
         return $this->twig->render('Entree/add.html.twig');

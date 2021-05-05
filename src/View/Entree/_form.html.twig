@@ -1,9 +1,9 @@
 {# TODO : manage errors display #}
 
 <form class="uk-form-horizontal uk-margin-large" method="post">
-	<input type="hidden" value="{{ entree.id }}" name="id">
+    <input type="hidden" value="{{ entree.id }}" name="id">
 
-	<div class="uk-margin">
+    <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-select">Catégorie</label>
         <div class="uk-form-controls">
             <select class="uk-select" id="form-horizontal-select" name="category" value="{{entree.category}}">
@@ -12,37 +12,47 @@
                 <option name="category">Vegan</option>
                 <option name="category">Omnivore</option>
             </select>
+            <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                {{ errors[2] }}
+            </div>
         </div>
-    </div>
 
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text">Nom du plat</label>
-        <div class="uk-form-controls">
-            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="name" name="name" value="{{entree.name}}">
-        </div>
-    </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">Nom du plat</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="form-horizontal-text" type="text" placeholder="name" name="name" value="{{entree.name}}">
+                <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                    {{ errors[1] }}
+                </div>
+            </div>
 
-	<div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-textarea">Description</label>
-        <div class="uk-form-controls">
-            <textarea class="uk-textarea" id="form-horizontal-textarea" rows="5" type="text" placeholder="description" name="description">{{entree.description}}</textarea>
-    	</div>
-    </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-horizontal-textarea">Description</label>
+                <div class="uk-form-controls">
+                    <textarea class="uk-textarea" id="form-horizontal-textarea" rows="5" type="text" placeholder="description" name="description">{{entree.description}}</textarea>
+                    <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                        {{ errors[3] }}
+                    </div>
+                </div>
 
-	<div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text">Prix</label>
-        <div class="uk-form-controls">
-            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="price" name="price" value="{{entree.price}}">
-        </div>
-    </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-horizontal-text">Prix</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="form-horizontal-text" type="text" placeholder="price" name="price" value="{{entree.price}}">
+                        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                            {{ errors[4] }}
+                        </div>
+                    </div>
 
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text">Image (nom avec extension)</label>
-        <div class="uk-form-controls">
-            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="image" name="image" value="{{entree.image}}">
-        </div>
-    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">Image (nom avec extension)</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="image" name="image" value="{{entree.image}}">
+                            <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                                {{ errors[5] }}
+                            </div>
+                        </div>
 
-<input class="uk-button uk-button-default uk-align-center" type="submit" value="Valider">
+                        <input class="uk-button uk-button-default uk-align-center" type="submit" value="Valider">
 
 </form>

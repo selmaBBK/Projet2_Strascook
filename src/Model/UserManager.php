@@ -13,11 +13,14 @@ class UserManager extends AbstractManager
 
     public function insert(array $user): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "(name, adress, pass)
-        VALUES (:name, :adress, :pass)");
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "(name, adress, pass, mail, pseudo)
+        VALUES (:name, :adress, :pass, :mail, :pseudo)");
         $statement->bindValue('name', $user['name'], \PDO::PARAM_STR);
         $statement->bindValue('adress', $user['adress'], \PDO::PARAM_STR);
         $statement->bindValue('pass', md5($user['pass']), \PDO::PARAM_STR);
+        $statement->bindValue('mail', $user['mail'], \PDO::PARAM_STR);
+        $statement->bindValue('pseudo', $user['pseudo'], \PDO::PARAM_STR);
+
 
         $statement->execute();
         return (int)$this->pdo->LastinsertId();
@@ -41,10 +44,45 @@ class UserManager extends AbstractManager
 
     public function checkLogin(array $user)
     {
-        $statement = $this->pdo->prepare('SELECT * FROM ' . self::TABLE . ' WHERE name=:name AND pass=:pass');
-        $statement->bindValue('name', $user['name'], \PDO::PARAM_STR);
+        $statement = $this->pdo->prepare('SELECT * FROM ' . self::TABLE . ' WHERE pseudo=:pseudo AND pass=:pass
+        OR mail=:mail');
+        //$statement->bindValue('name', $user['name'], \PDO::PARAM_STR);
         $statement->bindValue('pass', $user['pass'], \PDO::PARAM_STR);
+        $statement->bindValue('pseudo', $user['pseudo'], \PDO::PARAM_STR);
+        $statement->bindValue('mail', $user['mail'], \PDO::PARAM_STR);
         $statement->execute();
+
+        return $user = $statement->fetch();
+
+    }
+
+    public function checkPseudo(array $user)
+    {
+        $statement = $this->pdo->prepare('SELECT id FROM ' . self::TABLE . ' WHERE pseudo=:pseudo');
+        $statement->bindValue('pseudo', $user['pseudo'], \PDO::PARAM_STR);
+
+        $statement->execute();
+
+        return $user = $statement->fetch();
+    }
+
+    public function checkMail(array $user)
+    {
+        $statement = $this->pdo->prepare('SELECT id FROM ' . self::TABLE . ' WHERE mail=:mail');
+        $statement->bindValue('mail', $user['mail'], \PDO::PARAM_STR);
+
+        $statement->execute();
+
+        return $user = $statement->fetch();
+    }
+
+    public function checkPass(array $user)
+    {
+        $statement = $this->pdo->prepare('SELECT id FROM ' . self::TABLE . ' WHERE pass=:pass');
+        $statement->bindValue('pass', md5($user['pass']), \PDO::PARAM_STR);
+
+        $statement->execute();
+
         return $user = $statement->fetch();
     }
 }

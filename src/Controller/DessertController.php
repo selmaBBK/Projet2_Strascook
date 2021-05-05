@@ -45,11 +45,39 @@ class DessertController extends AbstractController
             // clean $_POST data
             $dessert = array_map('trim', $_POST);
 
+            $errors = [];
+
+            if (empty($dessert["name"] && isset($dessert["name"]))) {
+                $errors[1] = " Erreur : Entrez un nom de plat";
+            }
+
+            if (($dessert["category"] == 'Veuillez choisir une catégorie...' && isset($dessert["category"]))) {
+                $errors[2] = "Erreur : Entrez une catégorie";
+            }
+
+            if (empty($dessert["description"] && isset($dessert["description"]))) {
+                $errors[3] = "Erreur : Entrez une description";
+            }
+
+            if (empty($dessert["price"] && isset($dessert["price"]))) {
+                $errors[4] = "Erreur : Entrez un prix";
+            }
+
+            if (empty($dessert["image"] && isset($dessert["image"]))) {
+                $errors[5] = "Erreur : Entrez une image";
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('Dessert/add.html.twig', ['errors' => $errors]);
+
+            }
             // TODO validations (length, format...)
 
-            // if validation is ok, update and redirection
-            $dessertManager->update($dessert);
-            header('Location: /Admin/index/' . $id);
+            if (empty($errors)) {
+                // if validation is ok, update and redirection
+                $dessertManager->update($dessert);
+                header('Location: /Admin/index/' . $id);
+            }
         }
         return $this->twig->render('Dessert/edit.html.twig', ['dessert' => $dessert,]);
     }
@@ -66,12 +94,40 @@ class DessertController extends AbstractController
             // clean $_POST data
             $dessert = array_map('trim', $_POST);
 
+            $errors = [];
+
+            if (empty($dessert["name"] && isset($dessert["name"]))) {
+                $errors[1] = " Erreur : Entrez un nom de plat";
+            }
+
+            if (($dessert["category"] == 'Veuillez choisir une catégorie...' && isset($dessert["category"]))) {
+                $errors[2] = "Erreur : Entrez une catégorie";
+            }
+
+            if (empty($dessert["description"] && isset($dessert["description"]))) {
+                $errors[3] = "Erreur : Entrez une description";
+            }
+
+            if (empty($dessert["price"] && isset($dessert["price"]))) {
+                $errors[4] = "Erreur : Entrez un prix";
+            }
+
+            if (empty($dessert["image"] && isset($dessert["image"]))) {
+                $errors[5] = "Erreur : Entrez une image";
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('Dessert/add.html.twig', ['errors' => $errors]);
+
+            }
             // TODO validations (length, format...)
 
-            // if validation is ok, insert and redirection
-            $dessertManager = new DessertManager();
-            $id = $dessertManager->insert($dessert);
-            header('Location:/Admin/index/' . $id);
+            if (empty($errors)) {
+                // if validation is ok, insert and redirection
+                $dessertManager = new DessertManager();
+                $id = $dessertManager->insert($dessert);
+                header('Location:/Admin/index/' . $id);
+            }
         }
         return $this->twig->render('Dessert/add.html.twig');
     }

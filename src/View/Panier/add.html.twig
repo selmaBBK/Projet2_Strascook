@@ -19,7 +19,20 @@
 
     <legend class="uk-legend uk-text-center">Date (Attention on livre qu'à partir de 17h) : </legend>
     <div class="uk-width-1-2 uk-align-center">
-        <input class="uk-input" type="datetime-local" placeholder="now">
+        <input class="uk-input" type="datetime-local" placeholder="now" name="date">
+        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+            {{ errors[5] }}
+            <br>
+            {{ errors[1] }}
+            <br>
+            {{ errors[2] }}
+            <br>
+            {{ errors[3] }}
+        </div>
+        <br>
+        <br>
+        <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+        </div>
     </div>
 
     <legend class="uk-legend uk-text-center">Saisie de la commande : </legend>
