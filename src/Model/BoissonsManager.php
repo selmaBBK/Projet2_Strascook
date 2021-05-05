@@ -14,8 +14,11 @@ class BoissonsManager extends AbstractManager
 
     public function insert(array $boissons): int
     {
+        /*$statment contient la requête SQL avec des bindValues
+        c'est à dire des valeurs qui vont être remplacée plus bas*/
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
             " (`name`,`description`,`price`,`image`) VALUES (:name, :description, :price, :image)");
+        /* C'est ici que les bienValues (les :quelquechose) vont être remplacées */
         $statement->bindValue('name', $boissons['name'], \PDO::PARAM_STR);
         $statement->bindValue('description', $boissons['description'], \PDO::PARAM_STR);
         $statement->bindValue('price', $boissons['price'], \PDO::PARAM_INT);

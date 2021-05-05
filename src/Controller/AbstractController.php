@@ -36,6 +36,9 @@ abstract class AbstractController
         );
         $this->twig->addExtension(new DebugExtension());
         if ($_SESSION) {
+            /* Ici on intègre la variable globale $_SESSION
+            dans twig via la function addGlobal, user contient donc
+            toutes les données de $_SESSION*/
             $this->twig->addGlobal('user', $_SESSION);
         }
     }
