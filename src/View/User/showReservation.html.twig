@@ -4,7 +4,7 @@
     <h1 class="uk-text-center">Les reservations</h1>
     {% for reservation in reservation %}
     <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-align-center">
-        <h3 class="uk-card-title">Ma commande </h3>
+        <h3 class="uk-card-title"> Ma commande</h3>
         {% if reservation['plat_du_jour'] == 1 %}
             <h3>Plat du Jour : 12€</h3>
         {% for pj in pdj %}
