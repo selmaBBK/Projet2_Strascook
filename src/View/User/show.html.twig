@@ -22,10 +22,25 @@
             </header>
             <p uk-margin>
             <a class="uk-button uk-button-default"  href="/User/edit/{{ userData.id }}" >Editer le compte</a>
+                <a class="uk-button uk-button-danger" href="#modal-sections" uk-toggle>Supprimer</a>
 
-            <form onsubmit="return confirm('Attention : la supression du compte entraine une suppresion de toutes les données liées à la session');" class="c-inline" action="/User/delete/{{userData.id}}" method="post">
-                <button class="uk-button uk-button-danger" href="/User/Connexion">Supprimer le compte</button>
-            </form>
+            <div id="modal-sections" uk-modal>
+                <div class="uk-modal-dialog">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <div class="uk-modal-header">
+                        <h2 class="uk-modal-title">Confirmation</h2>
+                    </div>
+                    <div class="uk-modal-body">
+                        <p>Attention la supression du compte est irréversible.</p>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">Annuler</button>
+                        <form class="c-inline" action="/User/delete/{{userData.id}}" method="post">
+                            <button class="uk-button uk-button-default" href="/User/Connexion">Supprimer le compte</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             </p>
         </article>
        </li>
