@@ -115,7 +115,7 @@ LEFT JOIN " . self::TABLE_PLATS . " pl ON pl.id=pa.plats_id
 LEFT JOIN " . self::TABLE_DESSERTS . " d ON d.id=pa.desserts_id 
 LEFT JOIN " . self::TABLE_BOISSONS . " b ON b.id=pa.boissons_id 
 LEFT JOIN " . self::TABLE_PLAT_DU_JOUR . " pdj ON pdj.id=pa.plat_du_jour_id
-WHERE r.id=$id");
+WHERE r.user_id=:id ORDER BY r.date ASC ");
         $statement->bindValue('id', $id);
         $statement->execute();
         return $statement->fetch();
