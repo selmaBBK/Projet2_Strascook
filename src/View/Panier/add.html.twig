@@ -8,13 +8,13 @@
     <h1 class="uk-text-center">Reservation</h1>
     <legend class="uk-legend uk-text-center">Adresse :</legend>
     <div class="uk-width-1-2 uk-align-center">
-        <input class="uk-input" type="text" name="adress" placeholder="100">
+        <input class="uk-input" type="text" name="adress" placeholder={{user.adress}}>
     </div>
     <legend class="uk-legend uk-text-center">Choix de la formule :</legend>
    
     <div class="uk-width-1-6 uk-align-center">
-        <label ><input class="uk-radio " type="radio" name="radio1"> Chef à domicile </label>
-        <label><input class="uk-radio uk-margin-large-left" type="radio" name="radio1"> Livraison</label>
+        <label ><input class="uk-radio " type="radio" name="domicile"> Chef à domicile </label>
+        <label><input class="uk-radio uk-margin-large-left" type="radio" name="livraison"> Livraison</label>
     </div>
 
     <legend class="uk-legend uk-text-center">Date (Attention on livre qu'à partir de 17h) : </legend>
@@ -33,7 +33,6 @@
         <br>
         <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
         </div>
-
         
     </div>
 

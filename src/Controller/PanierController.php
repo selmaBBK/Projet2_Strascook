@@ -40,7 +40,27 @@ class PanierController extends AbstractController
         $checkUser->checkLogin();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($_POST['pdj'] == '') {
+                $_POST['pdj'] = null;
+            }
+            if ($_POST['entree'] == '') {
+                $_POST['entree'] = null;
+            }
+            if ($_POST['plat'] == '') {
+                $_POST['plat'] = null;
+            }
+            if ($_POST['dessert'] == '') {
+                $_POST['dessert'] = null;
+            }
+            if ($_POST['boisson'] == '') {
+                $_POST['boisson'] = null;
+            }
             $panier = $_POST;
+            if (isset($_POST['domicile']) && $_POST['domicile'] == 'on') {
+                $_SESSION['supplement'] = 400;
+            } else {
+                $_SESSION['supplement'] = 20;
+            }
 
             $errors = [];
 
@@ -74,37 +94,15 @@ class PanierController extends AbstractController
             }
 
             if (empty($errors)) {
-                if ($_POST['pdj'] == '') {
-                    $_POST['pdj'] = null;
-                }
-                if ($_POST['entree'] == '') {
-                    $_POST['entree'] = null;
-                }
-                if ($_POST['plat'] == '') {
-                    $_POST['plat'] = null;
-                }
-                if ($_POST['dessert'] == '') {
-                    $_POST['dessert'] = null;
-                }
-                if ($_POST['boisson'] == '') {
-                    $_POST['boisson'] = null;
-                }
-                $_POST['date'] = date("Y-m-d H:i:s");
-
                 // TODO validations (length, format...)
 
                 // if validation is ok, insert and redirection
                 $panierManager = new PanierManager();
+
                 $id = $panierManager->insert($panier);
-                header('Location:/Panier/show' . $id);
+                $idRes = $panierManager->insertReservation($panier, $id);
+                header('Location:/Reservation/show/' . $idRes);
             }
-
-            // if validation is ok, insert and redirection
-            $panierManager = new PanierManager();
-
-            $id = $panierManager->insert($panier);
-            $panierManager->insertReservation($panier, $id);
-            header('Location:/Reservation/show/' . $id);
         }
         return $this->twig->render('Panier/add.html.twig', [
             'entrees' => $entrees,
