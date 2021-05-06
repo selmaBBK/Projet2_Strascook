@@ -44,7 +44,7 @@ class PanierController extends AbstractController
 
             $errors = [];
 
-            if (isset($panier['date']) && empty($panier['name'])) {
+            if (isset($panier['date']) && empty($panier['date'])) {
                 $errors[5] = '⚠️ Entrez une date de commande';
             }
 

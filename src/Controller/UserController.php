@@ -37,7 +37,19 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $user = array_map('trim', $_POST);
+            $errors = [];
 
+            if (empty($user["pass"] && isset($user["pass"]))) {
+                $errors[77] = "⚠️ Erreur : Entrez un mot de passe";
+            }
+
+            if (strlen($user["pass"]) < 8) {
+                $errors[78] = '⚠️ Erreur : Mot de passe trop court (minimum 8 caractères)';
+            }
+
+            if (!empty($errors)) {
+                return $this->twig->render('User/edit.html.twig', ['errors' => $errors]);
+            }
             // TODO validations (length, format...)
 
             $user['pass'] = md5($_POST['pass']) ;
@@ -76,7 +88,7 @@ class UserController extends AbstractController
             }
 
             if (strlen($user["pass"]) < 8) {
-                $errors[20] = '⚠️ Erreur : Mot de passe trop court';
+                $errors[20] = '⚠️ Erreur : Mot de passe trop court (minimum 8 caractères)';
             }
 
             if (empty($user["repass"] && isset($user["repass"]))) {
