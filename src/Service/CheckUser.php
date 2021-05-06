@@ -13,7 +13,7 @@ class CheckUser
 
     public function checkAdmin()
     {
-        if ($_SESSION['admin'] != true) {
+        if (!$_SESSION || $_SESSION['admin'] != true) {
             header('location:/User/Connexion/');
         } else {
         }

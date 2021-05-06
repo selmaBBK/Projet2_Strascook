@@ -44,4 +44,10 @@ class DessertManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function sort(string $cat)
+    {
+        $query = 'SELECT * FROM ' . static::TABLE . " WHERE category = '$cat'";
+        return $this->pdo->query($query)->fetchAll();
+    }
 }

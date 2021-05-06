@@ -78,7 +78,7 @@ class DessertController extends AbstractController
                 header('Location: /Admin/index/' . $id);
             }
         }
-        return $this->twig->render('Dessert/edit.html.twig', ['dessert' => $dessert,]);
+        return $this->twig->render('Dessert/edit.html.twig', ['dessert' => $dessert]);
     }
 
     /**
@@ -195,5 +195,13 @@ du nom de fichier sur le poste du client
             $dessertManager->delete($id);
             header('Location:/Admin/index');
         }
+    }
+
+    public function catSort(string $cat)
+    {
+        $dessertManager = new DessertManager();
+        $desserts = $dessertManager->sort($cat);
+
+        return $this->twig->render('Dessert/dessert.html.twig', ['desserts' => $desserts]);
     }
 }

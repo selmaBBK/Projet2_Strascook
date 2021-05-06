@@ -1,6 +1,30 @@
 {% extends 'layout.html.twig' %}
 {% block title %}Dessert {{parent()}}{% endblock %}
 {% block content %}
+<div class="uk-align-center">
+
+    <nav class="uk-navbar-container " uk-navbar="dropbar: true; dropbar-mode: push">
+
+        <div class="uk-navbar-center">
+
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a class="uk-article-title" href="#"><h1 class="uk-text-center">Desserts</h1></a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-nav-header"><a href="/Dessert/catSort/Omnivore">Omnivores</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li class="uk-nav-header"><a href="/Dessert/catSort/vegetarian">Végétariens</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li class="uk-nav-header"><a href="/Dessert/catSort/vegan">Végans</a></li>
+                            <li class="uk-nav-divider"></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        </div>
     {% for dessert in desserts %}
         {% if (loop.index %2) != 0 %}
         <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
