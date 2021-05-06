@@ -210,4 +210,18 @@ class UserController extends AbstractController
         session_destroy();
         header('location:/User/Connexion/');
     }
+    /**
+     * Show information for a specific Reservation
+     */
+    public function showReservation(int $id): string
+    {
+        $userManager = new UserManager();
+        $reservation = $userManager->selectAllReservation($id);
+        if ($reservation['plat_du_jour_id'] == 1) {
+            $pdj = $userManager->selectPlatDuJour();
+        } else {
+            $pdj = '';
+        }
+        return $this->twig->render('User/showReservation.html.twig', ['reservation' => $reservation, 'pdj' => $pdj]);
+    }
 }
