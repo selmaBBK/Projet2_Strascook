@@ -217,11 +217,9 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $reservation = $userManager->selectAllReservation($id);
-        if ($reservation['plat_du_jour_id'] == 1) {
-            $pdj = $userManager->selectPlatDuJour();
-        } else {
-            $pdj = '';
-        }
+        var_dump($reservation);
+        $pdj = $userManager->selectPlatDuJour();
+
         return $this->twig->render('User/showReservation.html.twig', ['reservation' => $reservation, 'pdj' => $pdj]);
     }
 }

@@ -10,6 +10,7 @@
         {% for pj in pdj %}
             <p>{{ pj.name }}</p>
         {% endfor %}
+        {% for reservation in reservation %}
         {% if reservation['entreeName'] is not null %}
             <h3>Entrée :</h3>
             <p>{{reservation['entreeName']}} | {{reservation['entreePrice']}}€</p>
@@ -34,6 +35,7 @@
             <h3>Frais chef à domicile :</h3>
             <p>{{user.supplement}}€</p>
         {% endif %}
+        {% endfor %}
         <hr class="uk-divider-icon">
         <h3>Total :</h3><p>{{reservation['boissonPrice']+ reservationr['dessertPrice'] + reservation['entreePrice'] + reservation['platPrice'] + reservation['pdjPrice'] + user.supplement}}€</p>
     </div>
