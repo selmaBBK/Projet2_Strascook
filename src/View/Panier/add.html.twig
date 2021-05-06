@@ -13,8 +13,8 @@
     </div>
     <legend class="uk-legend uk-text-center">Choix de la formule :</legend>
    
-    <div class="uk-width-1-6 uk-align-center">
-        <label ><input class="uk-radio " type="radio" name="domicile"> Chef à domicile </label>
+    <div class="uk-width-1-5 uk-align-center">
+        <label><input class="uk-radio" type="radio" name="domicile"> Chef à domicile </label>
         <label><input class="uk-radio uk-margin-large-left" type="radio" name="livraison"> Livraison</label>
     </div>
 
@@ -41,7 +41,7 @@
 
     
 
-    <div class="uk-card uk-card-default uk-margin uk-align-center">
+    <div class="uk-card uk-card-default uk-margin uk-align-center ">
     <legend class="uk-legend uk-text-center"><label> Plat du jour : </legend>
     
         <div class="uk-margin">
@@ -51,7 +51,7 @@
                 <option value="1">Oui</option>
                 <option value="0">Non</option>
             </select>
-            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+            <button class="uk-button uk-button-default " type="button" tabindex="-1">
                 <span></span>
                 <span uk-icon="icon: chevron-down"></span>
             </button>
@@ -59,7 +59,6 @@
     </div>
     </div>
        
-
     <div class="uk-card uk-card-default uk-margin uk-align-center">
     <legend class="uk-legend uk-text-center">Entrees: </legend>
     
@@ -79,12 +78,9 @@
     </div>
 </div>
 
-
-        
     <div class="uk-card uk-card-default uk-margin uk-align-center">
     <legend class="uk-legend uk-text-center">Plats </legend>
 
-    
         <div class="uk-margin">
         <div uk-form-custom="target: > * > span:first-child">
             <select name='plat'>
@@ -100,8 +96,6 @@
         </div>
     </div>
 </div>
-
-    
 
     <div class="uk-card uk-card-default uk-margin uk-align-center">
         <legend class="uk-legend uk-text-center">desserts : </legend> 
@@ -120,7 +114,6 @@
             </button>
         </div>
     </div>
-
     </div>
 
     <div class="uk-card uk-card-default uk-margin uk-align-center">
@@ -136,15 +129,13 @@
                 {% endfor %}
             </select>
             <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                <span></span>
+                
                 <span uk-icon="icon: chevron-down"></span>
             </button>
         </div>
     </div>
-        </div>
+    </div>
         
-      
-
     <input class="uk-button uk-button-default uk-align-center" type="submit" value="Valider">
 
     
