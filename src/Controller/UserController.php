@@ -217,9 +217,7 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $reservation = $userManager->selectAllReservation($id);
-        var_dump($reservation);
         $pdj = $userManager->selectPlatDuJour();
-
         return $this->twig->render('User/showReservation.html.twig', ['reservation' => $reservation, 'pdj' => $pdj]);
     }
 }

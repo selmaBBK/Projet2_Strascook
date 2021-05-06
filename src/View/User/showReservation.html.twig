@@ -35,9 +35,9 @@
             <h3>Frais chef à domicile :</h3>
             <p>{{user.supplement}}€</p>
         {% endif %}
-        {% endfor %}
         <hr class="uk-divider-icon">
         <h3>Total :</h3><p>{{reservation['boissonPrice']+ reservationr['dessertPrice'] + reservation['entreePrice'] + reservation['platPrice'] + reservation['pdjPrice'] + user.supplement}}€</p>
+        {% endfor %}
     </div>
     <a class="uk-button uk-button-default" href="/User/show/{{user.userId}}">Retour</a>
 {% endblock %}
