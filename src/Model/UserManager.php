@@ -120,4 +120,13 @@ WHERE r.id=$id");
         $statement->execute();
         return $statement->fetch();
     }
+    public function selectPlatDuJour(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE_PLAT_DU_JOUR;
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        return $this->pdo->query($query)->fetchAll();
+    }
 }
