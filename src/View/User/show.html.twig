@@ -21,6 +21,7 @@
                 </div>
             </header>
             <p uk-margin>
+
             <a class="uk-button uk-button-default"  href="/User/edit/{{ userData.id }}" >Editer le compte</a>
                 <a class="uk-button uk-button-danger" href="#modal-sections" uk-toggle>Supprimer</a>
 
@@ -41,6 +42,21 @@
                         </form>
                     </div>
                 </div>
+
+            <a class="uk-button uk-button-default" href="/User/edit/{{ userData.id }}">Editer le compte</a>
+                <a class="uk-button uk-button-default" href="/User/showReservation/{{ userData.id }}">Mes reservations</a>
+
+            <form action="/User/delete/{{userData.id}}" method="POST"><button class="uk-button uk-button-danger" href="/User/Connexion">Supprimer le compte</button>     </form>
+
+
+
+
+
+            </p>
+
+            <div class="uk-comment-body">
+                <p>Attention : la supression du compte entraine une suppresion de toutes les données liées à la session.</p>
+
             </div>
             </p>
         </article>

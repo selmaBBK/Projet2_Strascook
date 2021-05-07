@@ -5,6 +5,14 @@ namespace App\Model;
 class UserManager extends AbstractManager
 {
     public const TABLE = "users";
+    public const TABLE_RESERVATION = 'reservation';
+    public const TABLE_ENTREES = 'entrees';
+    public const TABLE_BOISSONS = 'boissons';
+    public const TABLE_DESSERTS = 'desserts';
+    public const TABLE_PLAT_DU_JOUR = 'plat_du_jour';
+    public const TABLE_PLATS = 'plats';
+    public const TABLE_PANIER = 'panier';
+
 
 
     /**
@@ -87,5 +95,36 @@ class UserManager extends AbstractManager
         $statement->execute();
 
         return $user = $statement->fetch();
+    }
+/** Select informations Reservation
+*/
+    public function selectAllReservation(int $id)
+    {
+        $statement = $this->pdo->prepare("SELECT u.name userName,
+        r.adress userAdress, e.name entreeName, e.price entreePrice,
+        pl.name platName, pl.price platPrice, d.name dessertName, d.price dessertPrice,
+        b.name boissonName, d.price boissonPrice, pdj.name pdjName, pdj.price pdjPrice, r.user_id,
+       pa.plat_du_jour_id
+        FROM " . self::TABLE_RESERVATION . " r
+        JOIN " . self::TABLE . " u ON u.id=user_id
+        JOIN " . self::TABLE_PANIER . " pa ON pa.id=panier_id
+        LEFT JOIN " . self::TABLE_ENTREES . " e ON e.id=pa.entree_id
+        LEFT JOIN " . self::TABLE_PLATS . " pl ON pl.id=pa.plats_id
+        LEFT JOIN " . self::TABLE_DESSERTS . " d ON d.id=pa.desserts_id
+        LEFT JOIN " . self::TABLE_BOISSONS . " b ON b.id=pa.boissons_id
+        LEFT JOIN " . self::TABLE_PLAT_DU_JOUR . " pdj ON pdj.id=pa.plat_du_jour_id
+        WHERE r.user_id=:id ORDER BY r.date ASC");
+        $statement->bindValue('id', $id);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+    public function selectPlatDuJour(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE_PLAT_DU_JOUR;
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        return $this->pdo->query($query)->fetchAll();
     }
 }
