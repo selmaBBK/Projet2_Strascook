@@ -21,8 +21,29 @@
                     </div>
                 </div>
             </header>
-
             <p uk-margin>
+
+            <a class="uk-button uk-button-default"  href="/User/edit/{{ userData.id }}" >Editer le compte</a>
+                <a class="uk-button uk-button-danger" href="#modal-sections" uk-toggle>Supprimer</a>
+
+            <div id="modal-sections" uk-modal>
+                <div class="uk-modal-dialog">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <div class="uk-modal-header">
+                        <h2 class="uk-modal-title">Confirmation</h2>
+                    </div>
+                    <div class="uk-modal-body .uk-flex-center">
+                        <p>️Attention la supression du compte est irréversible️</p>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <form class="c-inline" action="/User/delete/{{userData.id}}" method="post">
+                            <br>
+                            <button class="uk-button uk-button-default uk-modal-close" type="button">Annuler</button>
+                            <button class="uk-button uk-button-primary" href="/User/Connexion">Supprimer le compte️</button>
+                        </form>
+                    </div>
+                </div>
+
             <a class="uk-button uk-button-default" href="/User/edit/{{ userData.id }}">Editer le compte</a>
                 <a class="uk-button uk-button-default" href="/User/showReservation/{{ userData.id }}">Mes reservations</a>
 
@@ -36,7 +57,9 @@
 
             <div class="uk-comment-body">
                 <p>Attention : la supression du compte entraine une suppresion de toutes les données liées à la session.</p>
+
             </div>
+            </p>
         </article>
        </li>
        </ul>

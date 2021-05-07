@@ -48,14 +48,33 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $user = array_map('trim', $_POST);
+            $errors = [];
 
+            if (empty($user["pass"] && isset($user["pass"]))) {
+                $errors[77] = "⚠️ Erreur : Entrez un mot de passe";
+            } else {
+                $userManager = new UserManager();
+                $checkPass = $userManager->checkPass($user);
+                if (!$checkPass) {
+                    $errors[645] = '⚠️ Ancien mot de passe incorrect 🤥';
+                }
+            }
+
+            if (strlen($user["confirmPass"]) < 8) {
+                $errors[78] = '⚠️ Erreur : Mot de passe trop court (minimum 8 caractères)';
+            }
+            if (!empty($errors)) {
+                    return $this->twig->render('User/edit.html.twig', ['errors' => $errors]);
+            }
             // TODO validations (length, format...)
+            if (empty($errors)) {
+                $user['pass'] = md5($_POST['confirmPass']);
 
-            $user['pass'] = md5($_POST['pass']);
-
-            // if validation is ok, update and redirection
-            $userManager->update($user);
-            header('Location: /User/show/' . $id);
+                $user['pass'] = md5($_POST['pass']);
+                // if validation is ok, update and redirection
+                $userManager->update($user);
+                header('Location: /User/show/' . $id);
+            }
         }
         return $this->twig->render('User/edit.html.twig', ['user' => $user,]);
     }
@@ -87,7 +106,7 @@ class UserController extends AbstractController
             }
 
             if (strlen($user["pass"]) < 8) {
-                $errors[20] = '⚠️ Erreur : Mot de passe trop court';
+                $errors[20] = '⚠️ Erreur : Mot de passe trop court (minimum 8 caractères)';
             }
 
             if (empty($user["repass"] && isset($user["repass"]))) {

@@ -1,29 +1,48 @@
 {# TODO : manage errors display #}
-
-<form class="uk-form-horizontal uk-margin-large" method="post">
-	<input type="hidden" value="{{ user.id }}" name="id">
+{% block content %}
+<form id="changePass" class="uk-form-horizontal uk-margin-large" method="post">
+    <input type="hidden" value="{{ user.id }}" name="id">
     <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text">Nom d'utilisateur : </label>
+        <label class="uk-form-label" for="form-horizontal-text">Adresse postale : </label>
         <div class="uk-form-controls">
-            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="name" name="name" value="{{user.name}}">
+            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="adress" name="adress" value="{{user.adress}}">
         </div>
     </div>
 
 	<div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-textarea">Adresse mail :</label>
         <div class="uk-form-controls">
-            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="adress" name="adress" value="{{user.adress}}">
+            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="mail" name="mail" value="{{user.mail}}">
     	</div>
     </div>
 
+
 	<div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text">Mot de Passe :</label>
+        <label class="uk-form-label" for="form-horizontal-text">Password : </label>
         <div class="uk-form-controls">
-            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="champs obligatoire" name="pass" >
+            <input class="uk-input" id="form-horizontal-text" type="password" placeholder="Minimum 8 caractères" name="pass" >
+            <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                {{ errors[77] }}
+                {{ errors[645] }}
+            </div>
+            </div>
+        </div>
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-textarea">Nouveau mot de passe :</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="confirmPass" type="password" placeholder="password" name="confirmPass">
+            <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
+                {{ errors[78] }}
+            </div>
         </div>
     </div>
+    <div class=" uk-flex uk-flex-middle uk-background-cover uk-dark" style="color: #FF1616">
 
-<input class="uk-button uk-button-default uk-align-center" type="submit" value="Valider">
+    </div>
+
+<input name="premier" class="uk-button uk-button-default uk-align-center" type="submit" value="Valider">
+
+    </div>
 </form>
 
-
+{% endblock %}
