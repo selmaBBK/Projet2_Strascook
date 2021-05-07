@@ -25,9 +25,11 @@
 
         </div>
         </div>
+
         {% for entree in entrees %}
         {% if (loop.index %2) != 0 %} 
-<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
+        <div uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 300">
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right"  uk-grid>
         <div class="uk-card-media-left uk-cover-container">
             <img src="/assets/images/{{entree.image}}.jpg" alt="" uk-cover>
             <canvas width="600" height="400"></canvas>
@@ -35,14 +37,16 @@
         <div>
             <div class="uk-card-body ">
                 <h3 class="uk-card-title ">{{ entree.name }}</h3>
-                <p>{{entree.description}}</p>
-                <form action="/Entree/delete/{{entree.id}}" method="POST">
-                </form>
+                <p>{{ entree.category }}</p>
+                <p>{{ entree.description }}</p>
+                <p>{{ entree.price }} €</p>
             </div>
         </div>
     </div>
     </div>
+        </div>
     {% else %}
+    <div uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 300">
 <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
     <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
         <img src="/assets/images/{{entree.image}}.jpg" alt="" uk-cover>
@@ -51,13 +55,14 @@
     <div>
             <div class="uk-card-body ">
                 <h3 class="uk-card-title ">{{ entree.name }}</h3>
-                <p>{{entree.description}}</p>
-                <form action="/Entree/delete/{{entree.id}}" method="POST">
-                </form>
+                <p>{{ entree.category }}</p>
+                <p>{{ entree.description }}</p>
+                <p>{{ entree.price }} €</p>
             </div>
         </div>
     </div>
     </div>
+        </div>
 {% endif %}
         {% else %}
             <li>Nothing to display</li>

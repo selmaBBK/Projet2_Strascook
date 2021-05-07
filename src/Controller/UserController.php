@@ -3,11 +3,20 @@
 namespace App\Controller;
 
 use App\Model\UserManager;
+use App\Service\CheckUser;
 
 class UserController extends AbstractController
 {
     public function index()
     {
+        /**
+         * On instancie un objet $checkAdmin pour pouvoir utiliser la méthode chackAdmin()
+         */
+        $checkAdmin = new CheckUser();
+        /**
+         * Ici si checkAdmin() est vérifié il fait rien sinon il redirige le client
+         */
+        $checkAdmin->checkAdmin();
         $userManager = new UserManager();
         $users = $userManager->selectAll('adress');
         return $this->twig->render('User/user.html.twig', ['users' => $users]);
@@ -19,6 +28,8 @@ class UserController extends AbstractController
 
     public function show(int $id): string
     {
+        $checkUser = new checkUser();
+        $checkUser->checkLogin();
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);
 
@@ -59,6 +70,8 @@ class UserController extends AbstractController
             if (empty($errors)) {
                 $user['pass'] = md5($_POST['confirmPass']);
 
+            $user['pass'] = md5($_POST['pass']);
+
                 // if validation is ok, update and redirection
                 $userManager->update($user);
                 header('Location: /User/show/' . $id);
@@ -77,7 +90,7 @@ class UserController extends AbstractController
             // clean $_POST data
             $user = array_map('trim', $_POST);
 
-            $pass = $_POST ["pass"];
+            $pass = $_POST["pass"];
 
             $errors = [];
 

@@ -38,6 +38,7 @@ class ReservationManager extends AbstractManager
         $statement->execute();
         return $statement->fetch();
     }
+
     /**
      * Delete  reservation
      */

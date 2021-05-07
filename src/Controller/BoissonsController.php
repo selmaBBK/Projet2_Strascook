@@ -179,7 +179,6 @@ class BoissonsController extends AbstractController
         return $this->twig->render('Boissons/add.html.twig');
     }
 
-
     /**
      * Delete a specific Boisson
      */

@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<section id = contact>
+<form action = "" method = "POST">
+    <fieldset class="uk-fieldset">
+        <legend class="uk-legend ">Contactez Strascook :</legend>
+
+        <div class="uk-margin">
+            <input required class="uk-input" type="text" placeholder="Nom" name="Nom">
+        </div>
+
+        <div class="uk-margin">
+            <input required class="uk-input" type="text" placeholder="Prénom" name="Prénom">
+        </div>
+
+        <div class="uk-margin">
+            <input class="uk-input" type="email" placeholder="Votre email" name="email" required >
+        </div>
+        <div class="uk-margin">
+            <label>Prestation souhaitée :</label>
+            <select required class="uk-select" id ="select" name="select">
+                <option name="mariage">Mariage</option>
+                <option name="anniversaire">Anniversaire</option>
+                <option name="autre">Autre Prestation</option>
+            </select>
+        </div>
+        <div class="uk-margin">
+            <label>Durée de la prestation  </label>
+            <select required class="uk-select" id ="select1" name="select1">
+                <option name="soiree">Soirée</option>
+                <option name="soiree2">Après-midi et soirée</option>
+                <option name="weekend">Tout un weekend</option>
+            </select>
+        </div>
+        <div class="uk-margin">
+            <label>Quelle prestation souhaitez-vous ?</label>
+            <textarea class="uk-textarea" rows="5" placeholder="Ecrivez ici votre demande" name="message"></textarea>
+        </div>
+        <div id = "Envoyer">
+            <input class = "uk-button uk-button-default " type = "submit" value = "Envoyer">
+        </div>
+    </fieldset>
+</form>
+</section>
+{% endblock %}
