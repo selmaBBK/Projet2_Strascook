@@ -73,7 +73,6 @@ class ReservationController extends AbstractController
     {
         $reservationManager = new ReservationManager();
         $reservation = $reservationManager->selectAllReservation($id);
-        var_dump($reservation);
         if ($reservation['plat_du_jour_id'] == 1) {
             $pdj = $reservationManager->selectPlatDuJour();
         } else {

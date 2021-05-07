@@ -33,7 +33,7 @@
                 {% if user is not defined %}
                 <li><a class="uk-text-emphasis" href="/User/connexion/">Inscription/Connexion</a></li>
                 {% endif %}
-                <li><a class="uk-text-emphasis" href="#">Contact</a></li>
+                <li><a class="uk-text-emphasis" href="/Contact/index/">Contact</a></li>
                 {% if user is defined %}
                 <li><a class="uk-text-emphasis" href="/User/logout/">Déconnexion</a></li>
                 <li><a class="uk-text-emphasis" href="/User/show/{{ user.userId }}">Mon compte</a></li>
