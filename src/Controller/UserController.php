@@ -64,7 +64,7 @@ class UserController extends AbstractController
                 $errors[78] = '⚠️ Erreur : Mot de passe trop court (minimum 8 caractères)';
             }
             if (!empty($errors)) {
-                    return $this->twig->render('User/edit.html.twig', ['errors' => $errors]);
+                return $this->twig->render('User/edit.html.twig', ['errors' => $errors]);
             }
             // TODO validations (length, format...)
             if (empty($errors)) {
@@ -225,7 +225,7 @@ class UserController extends AbstractController
                         }
 
 
-                        header('Refresh: 1;URL=/User/show/' . $login['id']);
+                        header('Refresh: 0;URL=/User/show/' . $login['id']);
                     } else {
                         header('Location:/User/Connexion/');
                     }
