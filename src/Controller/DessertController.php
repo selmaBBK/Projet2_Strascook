@@ -130,8 +130,8 @@ class DessertController extends AbstractController
             $errors = [];
             $uploadDir = __DIR__ . '/public/assets/images/';
             /* le nom de fichier sur le serveur est ici généré à partir
-du nom de fichier sur le poste du client
-(mais d'autre stratégies de nommage sont possibles)*/
+            du nom de fichier sur le poste du client
+            (mais d'autre stratégies de nommage sont possibles)*/
             $uploadFile = $uploadDir . basename($_FILES['image']['name']);
             // Je récupère l'extension du fichier
             $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
@@ -146,7 +146,6 @@ du nom de fichier sur le poste du client
             if ((!in_array($extension, $extensionsOk))) {
                 $errors[] = 'Veuillez sélectionner une image de type Jpg ou webp ou Png !';
             }
-
 
             /****** On vérifie si l'image existe et si le poids est autorisé en octets *************/
 
