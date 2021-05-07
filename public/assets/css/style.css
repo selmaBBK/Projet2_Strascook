@@ -1,0 +1,45 @@
+/*Formulaire de Contact*/
+#valider {
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+#contact {
+    margin-top: 2%;
+    padding-right: 15vw;
+    padding-left: 15vw;
+}
+
+.Contact{
+    display: flex;
+    justify-content:flex-start;
+    margin-left: 5%;
+    margin-top: 10%;
+    font-size: 1.5vw;
+}
+
+#button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+
+#fond {
+    height: 50%;
+    width:50%;
+}
+
+#Envoyer {
+    text-align: center;
+    margin-bottom: 1%;
+}
+#messages {
+    text-align: center;
+    margin-top: 6%;
+    margin-bottom: 6%;
+}
+#message {
+    text-align: center;
+    margin-top: 6%;
+    margin-bottom: 6%;
+}
