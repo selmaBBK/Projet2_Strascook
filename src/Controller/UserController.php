@@ -71,7 +71,6 @@ class UserController extends AbstractController
                 $user['pass'] = md5($_POST['confirmPass']);
 
             $user['pass'] = md5($_POST['pass']);
-
                 // if validation is ok, update and redirection
                 $userManager->update($user);
                 header('Location: /User/show/' . $id);
