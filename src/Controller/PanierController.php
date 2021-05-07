@@ -90,7 +90,14 @@ class PanierController extends AbstractController
             }
 
             if (!empty($errors)) {
-                return $this->twig->render('Panier/add.html.twig', ['errors' => $errors]);
+                return $this->twig->render('Panier/add.html.twig', [
+                    'errors' => $errors,
+                    'entrees' => $entrees,
+                    'boissons' => $boissons,
+                    'desserts' => $desserts,
+                    'platDuJour' => $platDuJour,
+                    'plats' => $plats,
+                ]);
             }
 
             if (empty($errors)) {

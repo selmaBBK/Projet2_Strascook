@@ -16,6 +16,7 @@
         {% for boisson in boissons %}
 
         {% if (loop.index %2) != 0 %}
+        <div uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 300">
             <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
                 <div class="uk-card-media-left uk-cover-container">
                     <img src="/assets/images/{{boisson.image}}" alt="" uk-cover>
@@ -25,11 +26,13 @@
                     <div class="uk-card-body">
                         <h3 class="uk-card-title">{{ boisson.name }}</h3>
                         <p>{{ boisson.description }}</p>
-                        <p>{{ boisson.price }}</p>
+                        <p>{{ boisson.price }} €</p>
                     </div>
                 </div>
             </div>
+            </div>
         {% else %}
+        <div uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 300">
             <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin-medium uk-margin-xlarge-left uk-margin-xlarge-right" uk-grid>
                 <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
                     <img src="/assets/images/{{boisson.image}}" alt="" uk-cover>
@@ -39,9 +42,10 @@
                     <div class="uk-card-body">
                         <h3 class="uk-card-title">{{ boisson.name }}</h3>
                         <p>{{ boisson.description }}</p>
-                        <p>{{ boisson.price }}</p>
+                        <p>{{ boisson.price }} €</p>
                     </div>
                 </div>
+            </div>
             </div>
         {% endif %}
 
